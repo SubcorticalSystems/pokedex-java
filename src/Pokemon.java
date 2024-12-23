@@ -20,6 +20,9 @@ public class Pokemon {
         this.spAtk = spAtk;
         this.spDef = spDef;
         this.speed = speed;
+
+        //add all this data to the national dex
+        Pokedex.nationalDex.add(this);
     }
 
     @Override
@@ -27,6 +30,9 @@ public class Pokemon {
         return "\n#" + dexNum + " " + name + "\n" + type
                 + "\nStats:\n" + "HP(" + hp + ") " + "Attack(" + atk + ") "
                 + "Defense(" + def + ") " + "Special Attack(" + spAtk + ") "
-                + "Special Defense(" + spDef + ") " + "Speed(" + speed + ")";
+                + "Special Defense(" + spDef + ") " + "Speed(" + speed + ")\n";
      }
+
+
+
 }
