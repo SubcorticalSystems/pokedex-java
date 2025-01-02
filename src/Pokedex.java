@@ -17,8 +17,18 @@ public class Pokedex {
         pokedex.readCSV();
         //pokedex.printNationalDex();
         pokedex.createGenOne();
-        pokedex.printGenOne();
+        pokedex.createGenTwo();
+        //pokedex.printGenTwo();
+        //pokedex.printGenOne();
         //pokedex.printKantoDex();
+        pokedex.printRegionalData(genTwo);
+    }
+
+    private void printRegionalData(Pokemon[] choice){
+        System.out.println(Arrays.toString(choice)
+                .replace("[", "")
+                .replace("]", "")
+                .replace(", ", ""));
     }
 
     private void printNationalDex(){
@@ -31,6 +41,7 @@ public class Pokedex {
     private void readCSV() throws IOException {
         BufferedReader reader = null;
         String line = "";
+        //use dexTracker to account for the 0 index in the arrays otherwise every dex number would be off by -1
         int dexTracker = 1;
 
         try{
@@ -75,25 +86,20 @@ public class Pokedex {
     private void createKantoDex() {
 
     }
-    void printGenOne(){
-        System.out.println(Arrays.toString(genOne)
-                .replace("[", "")
-                .replace("]", "")
-                .replace(", ", ""));
-    }
-    void printKantoDex(){
-        System.out.println(Arrays.toString(kantoDex)
-                .replace("[", "")
-                .replace("]", "")
-                .replace(", ", ""));
-    }
+
     //Johto Region #152-251
     private void createGenTwo() {
-        for(int i = 152; i <= 251; i++){
-            genTwo[i] = johtoDex[i];
+        int counter = 0;
+        for(int i = 151; i < 251; i++){
+            genTwo[counter] = nationalDex.get(i);
+            counter++;
         }
     }
+    //we need an algorithm that will search through an array and see if the dexNum is needed. If so we pull it and add it to our array.
+    private void createJohtoDex() {
 
+
+    }
     //Hoenn Region #252-386
     //#387-493
     //#494-649
