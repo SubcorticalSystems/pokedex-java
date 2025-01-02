@@ -2,7 +2,8 @@ public class Pokemon {
 
         private int dexNum;
         private String name;
-        private String type;
+        private String typeOne;
+        private String typeTwo;
         private int hp;
         private int atk;
         private int def;
@@ -10,22 +11,36 @@ public class Pokemon {
         private int spDef;
         private int speed;
 
+    Pokemon(){
+        this.dexNum = 0;
+        this.name = "";
+        this.typeOne = "";
+        this.typeTwo = "";
+        this.hp = 0;
+        this.atk = 0;
+        this.def = 0;
+        this.spAtk = 0;
+        this.spDef = 0;
+        this.speed = 0;
 
-    Pokemon(int dexNum, String name, String type, int hp, int atk, int def, int spAtk, int spDef, int speed) {
+    }
+    /*
+    //manual creating pokemon objects
+    Pokemon(int dexNum, String name, String typeOne, String typeTwo, int hp, int atk, int def, int spAtk, int spDef, int speed) {
         this.setDexNum(dexNum);
         this.setName(name);
-        this.setType(type);
+        this.setTypeOne(typeOne);
+        this.setTypeTwo(typeTwo);
         this.setHp(hp);
         this.setAtk(atk);
         this.setDef(def);
         this.setSpAtk(spAtk);
         this.setSpDef(spDef);
         this.setSpeed(speed);
-
-        //add all this data to the national dex
+        //add 'this' data to the national dex upon instantiation
         Pokedex.nationalDex.add(this);
     }
-
+    */
 
     public int getDexNum() {
         return dexNum;
@@ -43,12 +58,20 @@ public class Pokemon {
         this.name = name;
     }
 
-    public String getType() {
-        return type;
+    public String getTypeOne() {
+        return typeOne;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setTypeOne(String typeOne) {
+        this.typeOne = typeOne;
+    }
+
+    public String getTypeTwo() {
+        return typeTwo;
+    }
+
+    public void setTypeTwo(String typeTwo) {
+        this.typeTwo = typeTwo;
     }
 
     public int getHp() {
@@ -100,11 +123,9 @@ public class Pokemon {
     }
 
 
-
-
     @Override
     public String toString() {
-        return "\n#" + dexNum + " " + name + "\n" + type
+        return "\n#" + dexNum + " " + name + "\n" + typeOne + " " + typeTwo
                 + "\nStats:\n" + "HP(" + hp + ") " + "Attack(" + atk + ") "
                 + "Defense(" + def + ") " + "Special Attack(" + spAtk + ") "
                 + "Special Defense(" + spDef + ") " + "Speed(" + speed + ")\n";
