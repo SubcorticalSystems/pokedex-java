@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Set up BufferedReader to read from .csv file">
+    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Created a singular print method for Regional Pokemon data">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1735148735677" duration="5543000" />
       <workItem from="1735758885717" duration="285000" />
       <workItem from="1735759186028" duration="105000" />
-      <workItem from="1735759429470" duration="17290000" />
+      <workItem from="1735759429470" duration="27048000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
@@ -131,7 +130,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735782458982</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Created a singular print method for Regional Pokemon data">
+      <option name="closed" value="true" />
+      <created>1735825668528</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1735825668528</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -153,6 +160,7 @@
     <MESSAGE value="Implemented rudimentary structure of Array and ArrayList in pokedex" />
     <MESSAGE value="Changed attributes to static and created setters and getters" />
     <MESSAGE value="Set up BufferedReader to read from .csv file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up BufferedReader to read from .csv file" />
+    <MESSAGE value="Created a singular print method for Regional Pokemon data" />
+    <option name="LAST_COMMIT_MESSAGE" value="Created a singular print method for Regional Pokemon data" />
   </component>
 </project>
