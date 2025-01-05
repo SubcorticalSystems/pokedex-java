@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Pokedex {
     final String pokeFile = "resources/pokemon.csv";
@@ -17,16 +18,36 @@ public class Pokedex {
     //main method
     public static void main(String[] args) throws IOException {
         Pokedex pokedex = new Pokedex();
+        //reads from csv to populate national dex
         pokedex.readCSV();
-        //pokedex.printNationalDex();
+        //Creates Region's Pokémon
         pokedex.createGenOne();
         pokedex.createGenTwo();
 
+        //Creates Regional Dex
         pokedex.createKantoDex();
         pokedex.createJohtoDex();
-        pokedex.printRegionalData(kantoDex);
-        //pokedex.printRegionalData(johtoDex);
-        //pokedex.printRegionalData(genTwo);
+
+        //Calls method for user input
+        pokedex.userInput();
+    }
+    private void userInput() {
+        Scanner scanner = new Scanner(System.in);
+        int input;
+        int counter = 0;
+        System.out.println("Welcome to the Pokedex");
+        System.out.println("Would you like to search the National Dex or a Regional Dex?");
+        System.out.println("1. National Dex" + " 2. Regional Dex" + " Q. to quit");
+        input = scanner.nextInt();
+        if (input == 1) {
+            System.out.println("1. Search the National Dex" + " 2. Print the National Dex");
+            input = scanner.nextInt();
+            if(input == 2){
+                printNationalDex();
+            }
+        }
+
+
     }
 
     private void printRegionalData(Pokemon[] choice){

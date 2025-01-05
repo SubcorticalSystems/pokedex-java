@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Created a singular print method for Regional Pokemon data">
+    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Added Generation two Pokémon and Johto Dex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +97,7 @@
       <workItem from="1735148735677" duration="5543000" />
       <workItem from="1735758885717" duration="285000" />
       <workItem from="1735759186028" duration="105000" />
-      <workItem from="1735759429470" duration="27048000" />
+      <workItem from="1735759429470" duration="34289000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
@@ -138,7 +139,15 @@
       <option name="project" value="LOCAL" />
       <updated>1735825668528</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added Generation two Pokémon and Johto Dex">
+      <option name="closed" value="true" />
+      <created>1735922071469</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1735922071469</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -161,6 +170,7 @@
     <MESSAGE value="Changed attributes to static and created setters and getters" />
     <MESSAGE value="Set up BufferedReader to read from .csv file" />
     <MESSAGE value="Created a singular print method for Regional Pokemon data" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created a singular print method for Regional Pokemon data" />
+    <MESSAGE value="Added Generation two Pokémon and Johto Dex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Generation two Pokémon and Johto Dex" />
   </component>
 </project>
