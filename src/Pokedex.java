@@ -14,7 +14,7 @@ public class Pokedex {
     static Pokemon[] genOne = new Pokemon[151];
     static Pokemon[] kantoDex = new Pokemon[151];
     static Pokemon[] genTwo = new Pokemon[100];
-    static Pokemon[] johtoDex = new Pokemon[251];
+    static Pokemon[] johtoDex = new Pokemon[256];
     //main method
     public static void main(String[] args) throws IOException {
         Pokedex pokedex = new Pokedex();
@@ -106,8 +106,8 @@ public class Pokedex {
 
     private static Pokemon getPokemon(int i, String[] data) {
         Pokemon pokemon = new Pokemon();
-        pokemon.setDexNum(Integer.parseInt(data[i+1]));
         pokemon.setName(data[i]);
+        pokemon.setDexNum(Integer.parseInt(data[i+1]));
         pokemon.setTypeOne(data[i + 2]);
         pokemon.setTypeTwo(data[i + 3]);
         pokemon.setHp(Integer.parseInt((data[i +4])));
@@ -155,7 +155,6 @@ public class Pokedex {
                 7,8,9,144,145,146,243,244,245,147,148,149,246,247,248,249,250,150,151,251};
         for(int i = 0; i < dexNumsRequired.length; i++){
             target = nationalDex.get(dexNumsRequired[i]-1);
-            target.setDexNum(i+1);
             johtoDex[i] = target;
         }
     }

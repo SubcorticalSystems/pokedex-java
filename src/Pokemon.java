@@ -77,8 +77,8 @@ public class Pokemon {
     @Override
     public String toString() {
         return "\n#" + dexNum + " " + name + "\n" + typeOne + " " + typeTwo
-                + "\nBase Stats:\n" + "HP(" + hp + ") " + "Attack(" + atk + ") "
-                + "Defense(" + def + ") " + "Special Attack(" + spAtk + ") "
-                + "Special Defense(" + spDef + ") " + "Speed(" + speed + ")\n";
+                + "\nBase Stats:\n" + "HP(" + hp + ") " + "Atk(" + atk + ") "
+                + "Def(" + def + ") " + "SpAtk(" + spAtk + ") "
+                + "SpDef(" + spDef + ") " + "Speed(" + speed + ")\n";
      }
 }
