@@ -14,7 +14,7 @@ public class Pokedex {
     static Pokemon[] genOne = new Pokemon[151];
     static Pokemon[] kantoDex = new Pokemon[151];
     static Pokemon[] genTwo = new Pokemon[100];
-    static Pokemon[] johtoDex = new Pokemon[256];
+    static Pokemon[] johtoDex = new Pokemon[251];
     //main method
     public static void main(String[] args) throws IOException {
         Pokedex pokedex = new Pokedex();
@@ -28,6 +28,8 @@ public class Pokedex {
         pokedex.createKantoDex();
         pokedex.createJohtoDex();
 
+        //pokedex.printRegionalData(kantoDex);
+        //pokedex.printRegionalData(johtoDex);
         //Calls method for user input
         pokedex.userInput();
     }
@@ -44,6 +46,26 @@ public class Pokedex {
             input = scanner.nextInt();
             if(input == 2){
                 printNationalDex();
+            }
+        } else if (input == 2){
+            System.out.println("1. Kanto Dex" + " 2. Johto Dex");
+            input = scanner.nextInt();
+            if(input == 1){
+                System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex");
+                input = scanner.nextInt();
+                if(input == 1){
+                    //nothing yet
+                } else if (input == 2) {
+                    printRegionalData(kantoDex);
+                }
+            } else if (input == 2){
+                System.out.println("1. Search the Johto Dex" + " 2. Print the Johto Dex");
+                input = scanner.nextInt();
+                if (input == 1){
+                    //nothing yet
+                } else if (input == 2) {
+                    printRegionalData(johtoDex);
+                }
             }
         }
 
@@ -68,16 +90,13 @@ public class Pokedex {
     private void readCSV() throws IOException {
         BufferedReader reader = null;
         String line;
-        //use dexTracker to account for the 0 index in the arrays otherwise every dex number would be off by -1
-        int dexTracker = 1;
         try{
             reader = new BufferedReader(new FileReader(pokeFile));
             while((line = reader.readLine()) != null){
                 String[] data = line.split(",");
                 for(int i = 0; i < data.length; i+= 10){
-                    Pokemon pokemon = getPokemon(i, data, dexTracker);
+                    Pokemon pokemon = getPokemon(i, data);
                     nationalDex.add(pokemon);
-                    dexTracker++;
                 }}}catch(FileNotFoundException e) {
             throw new RuntimeException(e);
         }finally{
@@ -85,28 +104,19 @@ public class Pokedex {
         }
     }
 
-    private static Pokemon getPokemon(int i, String[] data, int dexTracker) {
+    private static Pokemon getPokemon(int i, String[] data) {
         Pokemon pokemon = new Pokemon();
-        pokemon.setDexNum(dexTracker);
+        pokemon.setDexNum(Integer.parseInt(data[i+1]));
         pokemon.setName(data[i]);
-        pokemon.setTypeOne(data[i + 1]);
-        pokemon.setTypeTwo(data[i + 2]);
-        pokemon.setHp(Integer.parseInt((data[i +3])));
-        pokemon.setAtk(Integer.parseInt(data[i +4]));
-        pokemon.setDef(Integer.parseInt(data[i +5]));
-        pokemon.setSpAtk(Integer.parseInt(data[i +6]));
-        pokemon.setSpDef(Integer.parseInt(data[i +7]));
-        pokemon.setSpeed(Integer.parseInt(data[i +8]));
+        pokemon.setTypeOne(data[i + 2]);
+        pokemon.setTypeTwo(data[i + 3]);
+        pokemon.setHp(Integer.parseInt((data[i +4])));
+        pokemon.setAtk(Integer.parseInt(data[i +5]));
+        pokemon.setDef(Integer.parseInt(data[i +6]));
+        pokemon.setSpAtk(Integer.parseInt(data[i +7]));
+        pokemon.setSpDef(Integer.parseInt(data[i +8]));
+        pokemon.setSpeed(Integer.parseInt(data[i +9]));
         return pokemon;
-    }
-
-    //makes sure that the National dex number attributes are accurate
-    private void refreshDexNum() {
-        int adjustDex = 1;
-        for(int i = 0; i < nationalDex.size(); i++){
-            nationalDex.get(i).setDexNum(adjustDex);
-            adjustDex++;
-        }
     }
 
     //Kanto Region #1-151
@@ -120,6 +130,7 @@ public class Pokedex {
         for(int i = 0; i < kantoDex.length; i++){
             kantoDex[i] = nationalDex.get(i);
         }
+
     }
 
     //Johto Region #152-251
@@ -146,7 +157,6 @@ public class Pokedex {
             target = nationalDex.get(dexNumsRequired[i]-1);
             target.setDexNum(i+1);
             johtoDex[i] = target;
-            refreshDexNum();
         }
     }
 

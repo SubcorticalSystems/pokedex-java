@@ -42,6 +42,8 @@ public class Pokemon {
         //Pokedex.nationalDex.add(this);
 }
 
+
+
     public int getDexNum() {return dexNum;}
     public void setDexNum(int dexNum) {this.dexNum = dexNum;}
 
