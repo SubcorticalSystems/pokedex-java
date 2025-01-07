@@ -11,7 +11,7 @@ public class Pokemon {
         private int spDef;
         private int speed;
 
-    //Empty parameter constructor for reading from csv
+//Empty parameter constructor for reading from csv
     Pokemon(){
         this.dexNum = 0;
         this.name = "";
@@ -24,6 +24,24 @@ public class Pokemon {
         this.spDef = 0;
         this.speed = 0;
 
+    }
+//way to copy objects that way adjustments can be made without mutating NationalDex
+    Pokemon(Pokemon target){
+        this.copy(target);
+    }
+
+    public void copy(Pokemon target){
+        this.dexNum = target.dexNum;
+        this.name = target.name;
+        this.typeOne = target.typeOne;
+        this.typeTwo = target.typeTwo;
+        this.hp = target.hp;
+        this.atk = target.atk;
+        this.def = target.def;
+        this.spAtk = target.spAtk;
+        this.spDef = target.spDef;
+        this.speed = target.speed;
+        Pokedex.placeholderDex.add(this);
     }
 
 //manual creating Pokémon objects

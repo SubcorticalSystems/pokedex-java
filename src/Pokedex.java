@@ -8,13 +8,18 @@ import java.util.Scanner;
 
 public class Pokedex {
     final String pokeFile = "resources/pokemon.csv";
-    static ArrayList<Pokemon> nationalDex = new ArrayList<>(); //Use an ArrayList for the National Pokédex since it can continue to grow
-    //Use Arrays for Regional Pokémon and Regional dex since they are finalized with fixed quantities
-    //the "gen..." arrays consist of the Pokémon introduced in that region, and may differ from the total Pokémon in that region's dex.
+    static ArrayList<Pokemon> nationalDex = new ArrayList<>();//Use an ArrayList for the National Pokédex since it can continue to grow
+    static ArrayList<Pokemon> placeholderDex = new ArrayList<>();//Used to store Pokémon if adjustments need to be made from National Dex compared to a Regional dex
+    //Use Arrays for Regional Pokémon and Regional Pokédex since they are finalized with fixed quantities
+    //the "gen___" arrays consist of the Pokémon introduced in that region,
+    //and may differ from the total Pokémon in that region's Pokédex.
     static Pokemon[] genOne = new Pokemon[151];
     static Pokemon[] kantoDex = new Pokemon[151];
     static Pokemon[] genTwo = new Pokemon[100];
     static Pokemon[] johtoDex = new Pokemon[256];
+    static Pokemon[] genThree = new Pokemon[135];
+    static Pokemon[] hoennDex = new Pokemon[202];
+
     //main method
     public static void main(String[] args) throws IOException {
         Pokedex pokedex = new Pokedex();
@@ -23,7 +28,8 @@ public class Pokedex {
         //Creates Region's Pokémon
         pokedex.createGenOne();
         pokedex.createGenTwo();
-
+        pokedex.createGenThree();
+        pokedex.printRegionalData(genThree);
         //Creates Regional Dex
         pokedex.createKantoDex();
         pokedex.createJohtoDex();
@@ -31,7 +37,7 @@ public class Pokedex {
         //pokedex.printRegionalData(kantoDex);
         //pokedex.printRegionalData(johtoDex);
         //Calls method for user input
-        pokedex.userInput();
+        //pokedex.userInput();
     }
     private void userInput() {
         Scanner scanner = new Scanner(System.in);
@@ -48,7 +54,7 @@ public class Pokedex {
                 printNationalDex();
             }
         } else if (input == 2){
-            System.out.println("1. Kanto Dex" + " 2. Johto Dex");
+            System.out.println("1. Kanto Dex" + " 2. Johto Dex" + " 3. Hoenn Dex");
             input = scanner.nextInt();
             if(input == 1){
                 System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex");
@@ -133,7 +139,7 @@ public class Pokedex {
 
     }
 
-    //Johto Region #152-251
+    //Johto Region #152-251 but +5 in Johto dex for evolutions added in generation 4
     private void createGenTwo() {
         int counter = 0;
         for(int i = 151; i < 251; i++){
@@ -154,13 +160,28 @@ public class Pokedex {
                 217,231,232,226,227,84,85,77,78,104,105,115,111,112,198,228,229,218,219,215,200,137,233,113,242,131,138,139,140,141,142,143,1,2,3,4,5,6,
                 7,8,9,144,145,146,243,244,245,147,148,149,246,247,248,249,250,150,151,251};
         for(int i = 0; i < dexNumsRequired.length; i++){
+            //takes the target values in the dexNumsRequired array and checks it against National Dex
             target = nationalDex.get(dexNumsRequired[i]-1);
-            johtoDex[i] = target;
+            //passes the target which is storing the National Dex version of each Pokemon
+            new Pokemon(target);
+            //Copies it to a placeholder ArrayList to fill the Johto Dex
+            johtoDex[i] = placeholderDex.get(i);
+            //So we can modify the new copy without affecting the original
+            johtoDex[i].setDexNum(i+1);
         }
     }
 
     //Hoenn Region #252-386
-
+    private void createGenThree(){
+        int counter = 0;
+        for(int i = 251; i < 386; i++){
+            genThree[counter] = nationalDex.get(i);
+            counter++;
+        }
+    }
+    private void createHoennDex(){
+        Pokemon target;
+    }
 
     //#387-493
 
