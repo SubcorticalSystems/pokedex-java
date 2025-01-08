@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Finished editing csv file, and currently working on Johto Dex">
+    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Added the ability to copy obj and started Hoenn pokedex">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +97,9 @@
       <workItem from="1735758885717" duration="285000" />
       <workItem from="1735759186028" duration="105000" />
       <workItem from="1735759429470" duration="34837000" />
-      <workItem from="1736112398333" duration="20934000" />
+      <workItem from="1736112398333" duration="25266000" />
+      <workItem from="1736339089236" duration="17000" />
+      <workItem from="1736339148860" duration="3756000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
@@ -180,7 +181,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736200155199</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Added the ability to copy obj and started Hoenn pokedex">
+      <option name="closed" value="true" />
+      <created>1736216220894</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1736216220894</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -208,6 +217,7 @@
     <MESSAGE value="Adding national dex numbers to csv and adjusting pokemon constructor" />
     <MESSAGE value="Adding national dex numbers to csv" />
     <MESSAGE value="Finished editing csv file, and currently working on Johto Dex" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished editing csv file, and currently working on Johto Dex" />
+    <MESSAGE value="Added the ability to copy obj and started Hoenn pokedex" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added the ability to copy obj and started Hoenn pokedex" />
   </component>
 </project>

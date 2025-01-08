@@ -18,7 +18,7 @@ public class Pokedex {
     static Pokemon[] genTwo = new Pokemon[100];
     static Pokemon[] johtoDex = new Pokemon[256];
     static Pokemon[] genThree = new Pokemon[135];
-    static Pokemon[] hoennDex = new Pokemon[202];
+    static Pokemon[] hoennDex = new Pokemon[211];
 
     //main method
     public static void main(String[] args) throws IOException {
@@ -29,20 +29,22 @@ public class Pokedex {
         pokedex.createGenOne();
         pokedex.createGenTwo();
         pokedex.createGenThree();
-        pokedex.printRegionalData(genThree);
+
         //Creates Regional Dex
         pokedex.createKantoDex();
         pokedex.createJohtoDex();
+        pokedex.createHoennDex();
 
+
+        System.out.println(hoennDex.length + " " + genThree.length);
         //pokedex.printRegionalData(kantoDex);
         //pokedex.printRegionalData(johtoDex);
         //Calls method for user input
-        //pokedex.userInput();
+        pokedex.userInput();
     }
     private void userInput() {
         Scanner scanner = new Scanner(System.in);
         int input;
-        int counter = 0;
         System.out.println("Welcome to the Pokedex");
         System.out.println("Would you like to search the National Dex or a Regional Dex?");
         System.out.println("1. National Dex" + " 2. Regional Dex" + " Q. to quit");
@@ -50,31 +52,54 @@ public class Pokedex {
         if (input == 1) {
             System.out.println("1. Search the National Dex" + " 2. Print the National Dex");
             input = scanner.nextInt();
-            if(input == 2){
-                printNationalDex();
-            }
-        } else if (input == 2){
+            if(input == 1){
+                //nothing yet
+                } else if(input == 2){
+                    printNationalDex();
+                }
+        } else if (input == 2) {
             System.out.println("1. Kanto Dex" + " 2. Johto Dex" + " 3. Hoenn Dex");
             input = scanner.nextInt();
-            if(input == 1){
-                System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex");
-                input = scanner.nextInt();
-                if(input == 1){
-                    //nothing yet
-                } else if (input == 2) {
-                    printRegionalData(kantoDex);
-                }
-            } else if (input == 2){
-                System.out.println("1. Search the Johto Dex" + " 2. Print the Johto Dex");
-                input = scanner.nextInt();
-                if (input == 1){
-                    //nothing yet
-                } else if (input == 2) {
-                    printRegionalData(johtoDex);
-                }
+            switch (input) {
+                case 1:
+                        System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex" +
+                                " 3. See what Pokemon Originated from this Generation");
+                        input = scanner.nextInt();
+                        if (input == 1) {
+                            //nothing yet
+                        } else if (input == 2) {
+                            printRegionalData(kantoDex);
+                        } else if (input == 3) {
+                            printRegionalData(genOne);
+                        }
+                        break;
+                case 2:
+                        System.out.println("1. Search the Johto Dex" + " 2. Print the Johto Dex"
+                                + " 3. See what Pokemon Originated from this Generation");
+                        input = scanner.nextInt();
+                        if (input == 1) {
+                            //nothing yet
+                        } else if (input == 2) {
+                            printRegionalData(johtoDex);
+                        } else if (input == 3) {
+                            printRegionalData(genTwo);
+                        }
+                        break;
+                case 3:
+                       System.out.println("1. Search the Hoenn Dex" + " 2. Print the Hoenn Dex"
+                               + " 3. See what Pokemon Originated from this Generation");
+                       input = scanner.nextInt();
+                       if (input == 1) {
+                       //nothing yet
+                       } else if (input == 2) {
+                        printRegionalData(hoennDex);
+                       } else if (input == 3) {
+                           printRegionalData(genThree);
+                       }
+                       break;
+
             }
         }
-
 
     }
 
@@ -149,9 +174,9 @@ public class Pokedex {
     }
 
     private void createJohtoDex() throws IOException {
-        Pokemon target;
+        //Pokemon target;
         //all required dex numbers using national dex numbers but in order of regional dex placements
-        int[] dexNumsRequired  = {152,153,154,155,156,157,158,159,160,16,17,18,21,22,163,164,19,20,161,162,
+        int[] johtoDexNumsRequired = {152,153,154,155,156,157,158,159,160,16,17,18,21,22,163,164,19,20,161,162,
                 172,25,26,10,11,12,13,14,15,165,166,167,168,74,75,76,41,42,169,173,35,36,174,39,40,175,176,27,28,23,24,206,179,180,181,
                 194,195,92,93,94,201,95,208,69,70,71,187,188,189,46,47,60,61,62,186,129,130,118,119,79,80,199,43,44,45,182,96,97,63,64,65,
                 132,204,205,29,30,31,32,33,34,193,469,191,192,102,103,185,202,48,49,123,212,127,214,109,110,88,89,81,82,100,101,190,424,209,
@@ -159,9 +184,11 @@ public class Pokedex {
                 72,73,98,99,213,120,121,90,91,222,223,224,170,171,86,87,108,463,114,465,133,134,135,136,196,197,116,117,230,207,225,220,221,473,216,
                 217,231,232,226,227,84,85,77,78,104,105,115,111,112,198,228,229,218,219,215,200,137,233,113,242,131,138,139,140,141,142,143,1,2,3,4,5,6,
                 7,8,9,144,145,146,243,244,245,147,148,149,246,247,248,249,250,150,151,251};
-        for(int i = 0; i < dexNumsRequired.length; i++){
-            //takes the target values in the dexNumsRequired array and checks it against National Dex
-            target = nationalDex.get(dexNumsRequired[i]-1);
+        //System.out.println(johtoDexNumsRequired.length);
+        /*
+        for(int i = 0; i < johtoDexNumsRequired.length; i++){
+            //takes the target values in the johtoDexNumsRequired array and checks it against National Dex
+            target = nationalDex.get(johtoDexNumsRequired[i]-1);
             //passes the target which is storing the National Dex version of each Pokemon
             new Pokemon(target);
             //Copies it to a placeholder ArrayList to fill the Johto Dex
@@ -169,6 +196,8 @@ public class Pokedex {
             //So we can modify the new copy without affecting the original
             johtoDex[i].setDexNum(i+1);
         }
+         */
+        populateRegionalDex(johtoDexNumsRequired,johtoDex);
     }
 
     //Hoenn Region #252-386
@@ -180,7 +209,42 @@ public class Pokedex {
         }
     }
     private void createHoennDex(){
+        //Pokemon target;
+        int[] hoennDexNumsRequired = {
+                252,253,254,255,256,257,258,259,260,261,262,263,264,265,266,267,268,269,270,
+                271,272,273,274,275,276,277,278,279,280,281,282,475,283,284,285,286,287,288,289,
+                63,64,65,290,291,292,293,294,295,296,297,118,119,129,130,298,183,184,
+                74,75,76,299,476,300,301,41,42,169,72,73,302,303,304,305,306,66,67,68,307,
+                308,309,310,311,312,81,82,462,100,101,313,314,43,44,45,182,84,85,406,
+                315,407,316,317,318,319,320,321,322,323,218,219,324,88,89,109,110,325,
+                326,27,28,327,227,328,329,330,331,332,333,334,335,336,337,338,339,340,341,342,
+                343,344,345,346,347,348,174,39,40,349,350,351,120,121,352,
+                353,354,355,356,477,357,433,358,359,37,38,172,25,26,54,55,360,202,
+                177,178,203,231,232,127,214,111,112,464,361,362,478,363,364,365,366,367,
+                368,369,222,170,171,370,116,117,230,371,372,373,374,375,376,377,378,379,380,
+                381,382,383,384,385,386
+        };
+        placeholderDex.clear();
+        System.out.println(placeholderDex);
+        //System.out.println(dexNumsRequired.length);
+        /*for(int i = 0; i < dexNumsRequired.length; i++){
+            target = nationalDex.get(dexNumsRequired[i]-1);
+            new Pokemon(target);
+            hoennDex[i] = placeholderDex.get(i);
+            hoennDex[i].setDexNum(i+1);
+        }
+         */
+        populateRegionalDex(hoennDexNumsRequired, hoennDex);
+    }
+
+    private void populateRegionalDex(int[] dexNumsRequired, Pokemon[] dex){
         Pokemon target;
+        for(int i = 0; i < dexNumsRequired.length; i++){
+            target = nationalDex.get(dexNumsRequired[i]-1);
+            new Pokemon(target);
+            dex[i] = placeholderDex.get(i);
+            dex[i].setDexNum(i+1);
+        }
     }
 
     //#387-493
