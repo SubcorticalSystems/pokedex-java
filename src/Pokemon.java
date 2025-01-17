@@ -30,7 +30,7 @@ public class Pokemon {
         this.copy(target);
     }
 
-    public void copy(Pokemon target){
+    private void copy(Pokemon target){
         this.dexNum = target.dexNum;
         this.name = target.name;
         this.typeOne = target.typeOne;
