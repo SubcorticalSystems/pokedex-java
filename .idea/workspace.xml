@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Finished Hoenn dex and implemented reusable code">
-      <change afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
+    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Seperating code into different classes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pokemon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokemon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -104,7 +102,8 @@
       <workItem from="1736339089236" duration="17000" />
       <workItem from="1736339148860" duration="4096000" />
       <workItem from="1736348125156" duration="7295000" />
-      <workItem from="1736775246736" duration="12581000" />
+      <workItem from="1736775246736" duration="13469000" />
+      <workItem from="1737330568233" duration="7844000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
@@ -202,7 +201,15 @@
       <option name="project" value="LOCAL" />
       <updated>1736343320582</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Seperating code into different classes">
+      <option name="closed" value="true" />
+      <created>1737150227401</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1737150227401</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -232,6 +239,7 @@
     <MESSAGE value="Finished editing csv file, and currently working on Johto Dex" />
     <MESSAGE value="Added the ability to copy obj and started Hoenn pokedex" />
     <MESSAGE value="Finished Hoenn dex and implemented reusable code" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Hoenn dex and implemented reusable code" />
+    <MESSAGE value="Seperating code into different classes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Seperating code into different classes" />
   </component>
 </project>

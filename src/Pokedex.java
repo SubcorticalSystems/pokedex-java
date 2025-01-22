@@ -39,104 +39,6 @@ public class Pokedex {
         //Calls method for user input
         UserInteraction.fetchUserInput();
     }
-    /*
-    private void userInput() {
-        Scanner scanner = new Scanner(System.in);
-        int input;
-        System.out.println("Welcome to the Pokedex");
-        System.out.println("Would you like to search the National Dex or a Regional Dex?");
-        System.out.println("1. National Dex" + " 2. Regional Dex" + " Q. to quit");
-        input = scanner.nextInt();
-        if (input == 1) {
-            System.out.println("1. Search the National Dex" + " 2. Print the National Dex");
-            input = scanner.nextInt();
-            if(input == 1){
-                //nothing yet
-                } else if(input == 2){
-                    //printNationalDex();
-                    printPokedex(nationalDex.toArray());
-                }
-        } else if (input == 2) {
-            String dexName;
-            System.out.println("1. Kanto Pokédex" + " 2. Johto Pokédex" + " 3. Hoenn Pokédex");
-            input = scanner.nextInt();
-            switch (input) {
-                case 1:
-                        System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex" +
-                                " 3. See what Pokemon Originated from this Generation");
-                        input = scanner.nextInt();
-                        if (input == 1) {
-                            //nothing yet
-                            dexName = "Kanto Pokédex";
-                            searchDex(kantoDex, dexName);
-
-                        } else if (input == 2) {
-                            printPokedex(kantoDex);
-                        } else if (input == 3) {
-                            printPokedex(genOne);
-                        }
-                        break;
-                case 2:
-                        System.out.println("1. Search the Johto Dex" + " 2. Print the Johto Dex"
-                                + " 3. See what Pokemon Originated from this Generation");
-                        input = scanner.nextInt();
-                        if (input == 1) {
-                            //nothing yet
-
-                        } else if (input == 2) {
-                            printPokedex(johtoDex);
-                        } else if (input == 3) {
-                            printPokedex(genTwo);
-                        }
-                        break;
-                case 3:
-                       System.out.println("1. Search the Hoenn Dex" + " 2. Print the Hoenn Dex"
-                               + " 3. See what Pokemon Originated from this Generation");
-                       input = scanner.nextInt();
-                       if (input == 1) {
-                       //nothing yet
-                       } else if (input == 2) {
-                        printPokedex(hoennDex);
-                       } else if (input == 3) {
-                           printPokedex(genThree);
-                       }
-                       break;
-
-            }
-        }
-
-    }
-    */
-    /*
-    private void searchDex(Pokemon[] dexSearch, String dexName) {
-        //System.out.println("Hello" + Arrays.toString(dexSearch));
-        Scanner scanner = new Scanner(System.in);
-        String choice = scanner.nextLine().toLowerCase();
-        for(int i = 0; i < dexSearch.length; i++){
-            if(dexSearch[i].getName().toLowerCase().contains(choice)) {
-                Pokemon pokemon;
-                System.out.println("Hello");
-                pokemon = dexSearch[i];
-                new MyFrame(pokemon,dexName);
-            }
-        }
-
-
-
-
-    }
-
-     */
-    /*
-    private <T> void printPokedex(T[] pokedex){
-        System.out.println(Arrays.toString(pokedex)
-                .replace("[", "")
-                .replace("]", "")
-                .replace(", ", ""));
-    }
-
-     */
-
 
     //Reads from .csv to populate National Dex ArrayList
     private void readCSV() throws IOException {
@@ -155,7 +57,7 @@ public class Pokedex {
             reader.close();
         }
     }
-
+//recieves input from readCSV in order to create a Pokemon Object
     private Pokemon getPokemon(int i, String[] data) {
         Pokemon pokemon = new Pokemon();
         pokemon.setName(data[i]);
@@ -247,8 +149,6 @@ public class Pokedex {
         //System.out.println(hoennDexNumsRequired.length);
         populateRegionalDex(hoennDexNumsRequired, hoennDex);
     }
-
-
 
     //#387-493
 
