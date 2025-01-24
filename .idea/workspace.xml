@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Seperating code into different classes">
+    <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Working on how console interacts with user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/UserInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -103,7 +102,7 @@
       <workItem from="1736339148860" duration="4096000" />
       <workItem from="1736348125156" duration="7295000" />
       <workItem from="1736775246736" duration="13469000" />
-      <workItem from="1737330568233" duration="7844000" />
+      <workItem from="1737330568233" duration="13188000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
@@ -209,7 +208,15 @@
       <option name="project" value="LOCAL" />
       <updated>1737150227401</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Working on how console interacts with user">
+      <option name="closed" value="true" />
+      <created>1737511020230</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1737511020231</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -240,6 +247,7 @@
     <MESSAGE value="Added the ability to copy obj and started Hoenn pokedex" />
     <MESSAGE value="Finished Hoenn dex and implemented reusable code" />
     <MESSAGE value="Seperating code into different classes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Seperating code into different classes" />
+    <MESSAGE value="Working on how console interacts with user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Working on how console interacts with user" />
   </component>
 </project>

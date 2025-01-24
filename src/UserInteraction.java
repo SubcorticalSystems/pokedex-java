@@ -1,156 +1,88 @@
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 public class UserInteraction {
-
     public static void fetchUserInput() {
         System.out.println("Welcome to the Pokedex! Choose From The Following.\n" +
                 "Would you like to print the National Pokedex [1]\n" +
                         "Search a Regional Pokedex [2]");
 
-        menu1();
+        nationalDexMenu();
     }
 
-    //static ArrayList<Integer> viableInputs = new ArrayList<>();
-
-    static ArrayList<Integer> viableInputs = new ArrayList<>();
-        int k = 0;
-        private static void menu1 () {
+    //menu1 will display the first layer of responses for either printing
+    //the national pokedex or opening menu2 which holds Regional Pokedexs
+    static ArrayList<Integer> viableInputs = new ArrayList<>();//can be filled with acceptable inputs for each menu
+        private static void nationalDexMenu() {
             try {
                 Scanner scanner = new Scanner(System.in);
                 int num = scanner.nextInt();
                 viableInputs.add(1);
                 viableInputs.add(2);
                 if (viableInputs.contains(num) && num == 1) {
-                    System.out.println("Hello Menu 1 Block 1");
                     printPokedex(Pokedex.nationalDex.toArray());
                 } else if (viableInputs.contains(num) && num == 2) {
-                    System.out.println("Hello Menu 1 Block 2");
-                    menu2();
+                    regionalDexMenu();
                 } else {
                     System.out.println("Input Not Valid. Please Try Again");
-                    menu1();
+                    nationalDexMenu();
                 }
             }catch (Exception InputMismatchException) {
                 System.out.println("Input Not Valid. Please Enter Number");
-                menu1();
+                nationalDexMenu();
             }
     }
-    private static void menu2() {
-        Scanner scanner = new Scanner(System.in);
-        int num = scanner.nextInt();
-        for (int i = 1; i <= 9; i++) {
-            viableInputs.add(i);
-        }
-        if (viableInputs.contains(num)) {
-            switch (num) {
-                case 1:
-                    System.out.println("Hello menu 2 block 1");
-                    break;
-                case 2:
-                    System.out.println("Hello menu 2 block 2");
-                    break;
-                case 3:
-                    System.out.println("Hello menu 2 block 3");
-                    break;
-            }
-        }
-    }
-
-        /*
-        if (viableInputs.contains(num) && num == 1) {
-            System.out.println("Hello menu 2 block 1");
-            //printPokedex(Pokedex.nationalDex.toArray());
-        } else if (viableInputs.contains(num) && num == 2) {
-            System.out.println("Hello menu 2 block 1");
-            //menu2();
-        } else i{
-            System.out.println("Input Not Valid. Please Try Again");
-            menu2();
-        }
-         */
-
-
-
-
-
-    /*
-    private static void userInput(){
-        int input = 0;
-        while(input != 1){
-            Scanner scanner = new Scanner(System.in);
-            input = scanner.nextInt();
-            if(input != 1){
-                System.out.println("Please try again");
-            }
-
-        }
-        menu1();
-    }
-
-     */
-
-    /*
-    private static void userInput() {
-        Scanner scanner = new Scanner(System.in);
-        int input;
-        System.out.println("Welcome to the Pokedex");
-        System.out.println("Would you like to view the National Dex or a search a Regional Dex?");
-        System.out.println("1. View National Dex" + " 2. Regional Dex" + " Q. to quit");
-        input = scanner.nextInt();
-        if (input == 1) {
-                printPokedex(Pokedex.nationalDex.toArray());
-        } else if (input == 2) {
-            String dexName;
-            System.out.println("1. Kanto Pokédex" + " 2. Johto Pokédex" + " 3. Hoenn Pokédex");
-            input = scanner.nextInt();
-            switch (input) {
-                case 1:
-                    System.out.println("1. Search the Kanto Dex" + " 2. Print the Kanto Dex" +
-                            " 3. See what Pokemon Originated from this Generation");
-                    input = scanner.nextInt();
-                    if (input == 1) {
-                        dexName = "Kanto Pokédex";
-                       searchDex(Pokedex.kantoDex, dexName);
-                    } else if (input == 2) {
-                        printPokedex(Pokedex.kantoDex);
-                    } else if (input == 3) {
-                        printPokedex(Pokedex.genOne);
+    private static void regionalDexMenu() {
+            String pokedexName = "";
+            System.out.println("Please select which Regional Pokedex you would like");
+            System.out.println("Kanto Pokedex [1] ||  Johto Pokedex [2] || Hoenn Pokedex [3]");
+            try{
+                Scanner scanner = new Scanner(System.in);
+                int num = scanner.nextInt();
+                for (int i = 1; i <= 9; i++) {
+                    viableInputs.add(i);
+                }
+                if (viableInputs.contains(num)) {
+                    switch (num) {
+                        case 1:
+                            pokedexName = "Kanto Pokedex";
+                            printOrSearchMenu(Pokedex.kantoDex, pokedexName);
+                            break;
+                        case 2:
+                            pokedexName = "Johto Pokedex";
+                            printOrSearchMenu(Pokedex.johtoDex, pokedexName);
+                            break;
+                        case 3:
+                            pokedexName = "Hoenn Pokedex";
+                            printOrSearchMenu(Pokedex.hoennDex, pokedexName);
+                            break;
                     }
-                    break;
-                case 2:
-                    System.out.println("1. Search the Johto Dex" + " 2. Print the Johto Dex"
-                            + " 3. See what Pokemon Originated from this Generation");
-                    input = scanner.nextInt();
-                    if (input == 1) {
-                        dexName = "Johto Pokédex";
-                        searchDex(Pokedex.johtoDex, dexName);
-                    } else if (input == 2) {
-                        printPokedex(Pokedex.johtoDex);
-                    } else if (input == 3) {
-                        printPokedex(Pokedex.genTwo);
-                    }
-                    break;
-                case 3:
-                    System.out.println("1. Search the Hoenn Dex" + " 2. Print the Hoenn Dex"
-                            + " 3. See what Pokemon Originated from this Generation");
-                    input = scanner.nextInt();
-                    if (input == 1) {
-                        dexName = "Hoenn Pokédex";
-                        searchDex(Pokedex.hoennDex, dexName);
-                    } else if (input == 2) {
-                       printPokedex(Pokedex.hoennDex);
-                    } else if (input == 3) {
-                        printPokedex(Pokedex.genThree);
-                    }
-                    break;
-
+                }
+            }catch (Exception InputMismatchException) {
+                System.out.println("Input Not Valid. Please Enter Number");
+                regionalDexMenu();
             }
-        }
+
     }
 
-     */
+    private static void printOrSearchMenu(Pokemon[] pokedex, String pokedexName) {
+            System.out.println("Search " + pokedexName + " [1] || Print " + pokedexName + " [2]");
+            try{
+                Scanner scanner = new Scanner(System.in);
+                int num = scanner.nextInt();
+                viableInputs.add(1);
+                viableInputs.add(2);
+                if (viableInputs.contains(num) && num == 1) {
+                    searchDex(pokedex, pokedexName);
+                } else if (viableInputs.contains(num) && num == 2) {
+                    printPokedex(pokedex);
+                }
+            } catch (Exception InputMismatchException) {
+                System.out.println("Input Not Valid. Please Enter Number");
+                printOrSearchMenu(pokedex, pokedexName);
+            }
+    }
 
     private static <T> void printPokedex(T[] pokedex){
         System.out.println(Arrays.toString(pokedex)
@@ -160,7 +92,6 @@ public class UserInteraction {
     }
 
     private static void searchDex(Pokemon[] dexSearch, String dexName) {
-        //System.out.println("Hello" + Arrays.toString(dexSearch));
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.nextLine().toLowerCase();
         for (int i = 0; i < dexSearch.length; i++) {
