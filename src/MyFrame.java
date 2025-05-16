@@ -3,8 +3,59 @@ import java.awt.*;
 import javax.swing.border.AbstractBorder;
 
 public class MyFrame extends JFrame {
+    private Pokemon[] pokedexGlobal;
+    private JLabel[] nameLabels = new JLabel[5];
+    private int selectedIndex = 0;
+    private JPanel displayPanel;
+    private int scrollOffset = 0;
+    private static final int VISIBLE_ROWS = 5;
 
-    public MyFrame() {
+    /*
+    private void updateDisplay() {
+        for (int i = 0; i < 5; i++) {
+            int index = selectedIndex + i;
+            if (index < pokedexGlobal.length && pokedexGlobal[index] != null) {
+                nameLabels[i].setText("  " + pokedexGlobal[index].getName());
+            } else {
+                nameLabels[i].setText("");
+            }
+
+            // Highlight the selected row
+            nameLabels[i].setOpaque(index == selectedIndex);
+            nameLabels[i].setBackground(index == selectedIndex ? Color.YELLOW : new Color(34, 139, 34));
+        }
+    }
+
+ */
+private void updateDisplay() {
+    for (int i = 0; i < VISIBLE_ROWS; i++) {
+        int index = scrollOffset + i;
+        if (index < pokedexGlobal.length && pokedexGlobal[index] != null) {
+            nameLabels[i].setText(pokedexGlobal[index].getName());
+            int dexNumber = pokedexGlobal[index].getDexNum(); // assuming getDexNumber() exists
+            String name = pokedexGlobal[index].getName();
+            String formatted = String.format("  #%04d  %s", dexNumber, name); // two spaces for padding, 3-digit dex number
+
+            nameLabels[i].setText(formatted);
+        } else {
+            nameLabels[i].setText("");
+        }
+
+        boolean isSelected = (index == selectedIndex);
+        nameLabels[i].setOpaque(true);
+        nameLabels[i].setBackground(isSelected ? new Color(200, 200, 200) : new Color(34, 139, 34));
+        nameLabels[i].setForeground(Color.BLACK);
+    }
+
+    displayPanel.revalidate();
+    displayPanel.repaint();
+}
+
+
+
+    public MyFrame(String dexName, Pokemon[] pokedex) {
+        this.pokedexGlobal = pokedex;
+
         setTitle("Pokédex");
         setSize(500, 600);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -23,6 +74,29 @@ public class MyFrame extends JFrame {
         basePanel.setBackground(new Color(200, 0, 0));
         basePanel.setLayout(null);
         setContentPane(basePanel);
+
+
+        DiagonalScreenPanel screenPanel = new DiagonalScreenPanel();
+        screenPanel.setBounds(100, 120, 300, 200);
+        screenPanel.setLayout(null);
+        basePanel.add(screenPanel);
+
+
+        displayPanel = new JPanel();
+        displayPanel.setBackground(new Color(34, 139, 34));
+        displayPanel.setBounds(20, 20, 260, 160);
+        displayPanel.setLayout(new GridLayout(5, 1));
+        screenPanel.add(displayPanel);
+
+// Add Pokémon name labels
+        for (int i = 0; i < 5; i++) {
+            nameLabels[i] = new JLabel("", SwingConstants.LEFT);
+            nameLabels[i].setFont(new Font("Monospaced", Font.BOLD, 14));
+            nameLabels[i].setForeground(Color.black);
+            displayPanel.add(nameLabels[i]);
+        }
+
+
 
         class CirclePanel extends JPanel {
             private final Color color;
@@ -110,17 +184,34 @@ public class MyFrame extends JFrame {
         }
 
         // "Pokédex" label above screen--will be replaced depending on which dex is open
-        JLabel titleLabel = new JLabel("Pokédex");
+        JLabel titleLabel = new JLabel(dexName);
+        /*
         titleLabel.setFont(new Font("Courier New", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
         titleLabel.setBounds(190, 60, 200, 30);
         basePanel.add(titleLabel);
 
+         */
+        titleLabel.setFont(new Font("Courier New", Font.BOLD, 24));
+        titleLabel.setForeground(Color.WHITE);
 
+// Let it compute the preferred width
+        Dimension size = titleLabel.getPreferredSize();
+
+// Center the label manually
+        int frameWidth = 500;
+        int x = (frameWidth - size.width) / 2;
+
+        titleLabel.setBounds(x, 85, size.width, size.height);
+        basePanel.add(titleLabel);
+
+/*
         DiagonalScreenPanel screenPanel = new DiagonalScreenPanel();
         screenPanel.setBounds(100, 120, 300, 200);
         screenPanel.setLayout(null);
         basePanel.add(screenPanel);
+
+ */
 
         class DiagonalScreenPanel extends JPanel {
             public DiagonalScreenPanel() {
@@ -150,10 +241,17 @@ public class MyFrame extends JFrame {
 
 
         // Green display inside
+        /*
         JPanel displayPanel = new JPanel();
         displayPanel.setBackground(new Color(34, 139, 34));
         displayPanel.setBounds(20, 20, 260, 160);
         screenPanel.add(displayPanel);
+         */
+
+
+
+
+
 
 
         // D-pad
@@ -182,6 +280,48 @@ public class MyFrame extends JFrame {
         center.setBackground(dpadColor.darker());
         center.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 2));
         basePanel.add(center);
+
+
+        /*
+        upButton.setEnabled(true);
+        upButton.addActionListener(e -> {
+            if (selectedIndex > 0) {
+                selectedIndex--;
+                updateDisplay();
+            }
+        });
+
+        downButton.setEnabled(true);
+        downButton.addActionListener(e -> {
+            if (selectedIndex < pokedex.length - 1) {
+                selectedIndex++;
+                updateDisplay();
+            }
+        });
+
+         */
+        upButton.setEnabled(true);
+        upButton.addActionListener(e -> {
+            if (selectedIndex > 0) {
+                selectedIndex--;
+                if (selectedIndex < scrollOffset) {
+                    scrollOffset--;
+                }
+                updateDisplay();
+            }
+        });
+        downButton.setEnabled(true);
+        downButton.addActionListener(e -> {
+            if (selectedIndex < pokedexGlobal.length - 1) {
+                selectedIndex++;
+                if (selectedIndex >= scrollOffset + VISIBLE_ROWS) {
+                    scrollOffset++;
+                }
+                updateDisplay();
+            }
+        });
+
+
 
         // Circular A and B buttons
         /*CircleButton buttonA = new CircleButton("B", new Color(255, 80, 80));
@@ -221,9 +361,12 @@ public class MyFrame extends JFrame {
         basePanel.add(actionButton);
 
  */
+        updateDisplay();
 }
 
-        private JButton createDpadButton (String text, Color bgColor){
+
+
+    private JButton createDpadButton (String text, Color bgColor){
             JButton button = new JButton(text);
             button.setFont(new Font("Arial", Font.BOLD, 16));
             button.setForeground(Color.WHITE);
@@ -250,10 +393,12 @@ public class MyFrame extends JFrame {
                 g.drawOval(x, y, diameter, diameter);
             }
         }
-
+/*
         public static void main (String[]args){
             SwingUtilities.invokeLater(() -> new MyFrame().setVisible(true));
         }
+        */
+
     }
 
     class CircleButton extends JButton {
