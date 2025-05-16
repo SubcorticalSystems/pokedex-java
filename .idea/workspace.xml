@@ -7,7 +7,6 @@
     <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Working on how console interacts with user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +121,7 @@
       <workItem from="1738163474306" duration="465000" />
       <workItem from="1738963304369" duration="2535000" />
       <workItem from="1741979568966" duration="156000" />
-      <workItem from="1746453766530" duration="18860000" />
+      <workItem from="1746453766530" duration="20457000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
