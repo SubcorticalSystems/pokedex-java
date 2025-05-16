@@ -22,10 +22,11 @@ public class Pokedex {
 
     //main method
     public static void main(String[] args) throws IOException {
+        //Creates a new pokedex Object to store all the pokemon into
         Pokedex pokedex = new Pokedex();
-        //new MyFrame();
         //reads from csv to populate national dex
         pokedex.readCSV();
+
         //Creates Region's Pokémon
         pokedex.createGenOne();
         pokedex.createGenTwo();

@@ -98,7 +98,9 @@ public class UserInteraction {
             if (dexSearch[i].getName().toLowerCase().contains(choice)) {
                 Pokemon pokemon;
                 pokemon = dexSearch[i];
-                new MyFrame(pokemon, dexName);
+                //fix this
+                new MyFrame();
+                //new MyFrame(pokemon, dexName);
             }
         }
 

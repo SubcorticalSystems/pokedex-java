@@ -45,7 +45,10 @@ public class Pokemon {
     }
 
 //manual creating Pokémon objects
-    Pokemon(int dexNum, String name, String typeOne, String typeTwo, int hp, int atk, int def, int spAtk, int spDef, int speed) {
+    Pokemon(int dexNum, String name,
+            String typeOne, String typeTwo, int hp,
+            int atk, int def, int spAtk, int spDef,
+            int speed) {
         this.setDexNum(dexNum);
         this.setName(name);
         this.setTypeOne(typeOne);
