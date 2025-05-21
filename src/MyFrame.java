@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import javax.swing.border.AbstractBorder;
 
 public class MyFrame extends JFrame {
@@ -9,8 +11,117 @@ public class MyFrame extends JFrame {
     private JPanel displayPanel;
     private int scrollOffset = 0;
     private static final int VISIBLE_ROWS = 5;
+    private JPanel statPanel;
+//new JLabel(new ImageIcon("path/to/sprite.png")) // might need this later
 
-//Allows functionality of scrolling through dex
+    /* simplistic UI for statPanel
+    private void showPokemonStats(Pokemon pokemon) {
+        displayPanel.setVisible(false); // hide list
+        if (statPanel != null) {
+            statPanel.setVisible(false);
+            displayPanel.getParent().remove(statPanel);
+        }
+
+        statPanel = new JPanel();
+        statPanel.setBackground(new Color(34, 139, 34));
+        statPanel.setBounds(20, 20, 260, 160);
+        statPanel.setLayout(new GridLayout(7, 1)); // 7 rows for different stats
+
+        statPanel.add(new JLabel(String.format("#%04d %s", pokemon.getDexNum(), pokemon.getName()), SwingConstants.CENTER));
+        statPanel.add(new JLabel("Type: " + pokemon.getTypeOne() + (pokemon.getTypeTwo().isEmpty() ? "" : " / " + pokemon.getTypeTwo())));
+        statPanel.add(new JLabel("HP: " + pokemon.getHp()));
+        statPanel.add(new JLabel("Attack: " + pokemon.getAtk()));
+        statPanel.add(new JLabel("Defense: " + pokemon.getDef()));
+        statPanel.add(new JLabel("Sp. Atk: " + pokemon.getSpAtk()));
+        statPanel.add(new JLabel("Sp. Def: " + pokemon.getSpDef()));
+        statPanel.add(new JLabel("Speed: " + pokemon.getSpeed()));
+
+        ((JPanel) displayPanel.getParent()).add(statPanel);
+        statPanel.setVisible(true);
+        displayPanel.getParent().revalidate();
+        displayPanel.getParent().repaint();
+    }
+     */
+    //more advanced UI for statPanel which includes ability to add sprites
+    private void showPokemonStats(Pokemon pokemon) {
+        displayPanel.setVisible(false);
+        if (statPanel != null) {
+            statPanel.setVisible(false);
+            displayPanel.getParent().remove(statPanel);
+        }
+
+        statPanel = new JPanel(new GridBagLayout());
+        statPanel.setBackground(new Color(34, 139, 34));
+        statPanel.setBounds(20, 20, 260, 160);
+
+        GridBagConstraints gbc = new GridBagConstraints();
+        gbc.insets = new Insets(2, 5, 2, 5);
+        gbc.anchor = GridBagConstraints.WEST;
+
+        // Title: Name + Dex #
+        JLabel nameLabel = new JLabel(String.format("#%04d  %s", pokemon.getDexNum(), pokemon.getName()));
+        nameLabel.setFont(new Font("Monospaced", Font.BOLD, 14));
+        nameLabel.setForeground(Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = 0;
+        gbc.gridwidth = 2;
+        statPanel.add(nameLabel, gbc);
+
+        // Placeholder for sprite (top-right)
+        JLabel spritePlaceholder = new JLabel(" ");
+        spritePlaceholder.setPreferredSize(new Dimension(60, 60));
+        spritePlaceholder.setOpaque(true);
+        spritePlaceholder.setBackground(new Color(30, 100, 30));
+        gbc.gridx = 2;
+        gbc.gridy = 0;
+        gbc.gridwidth = 1;
+        gbc.gridheight = 3;
+        statPanel.add(spritePlaceholder, gbc);
+
+        // Type(s)
+        JLabel typeLabel = new JLabel("Type: " + pokemon.getTypeOne() +
+                (pokemon.getTypeTwo().isEmpty() ? "" : " / " + pokemon.getTypeTwo()));
+        typeLabel.setFont(new Font("Monospaced", Font.PLAIN, 12));
+        typeLabel.setForeground(Color.BLACK);
+        gbc.gridx = 0;
+        gbc.gridy = 1;
+        gbc.gridwidth = 2;
+        gbc.gridheight = 1;
+        statPanel.add(typeLabel, gbc);
+
+        // Stats in two columns
+        String[] leftStats = {
+                "HP: " + pokemon.getHp(),
+                "Attack: " + pokemon.getAtk(),
+                "Defense: " + pokemon.getDef()
+        };
+        String[] rightStats = {
+                "Sp. Atk: " + pokemon.getSpAtk(),
+                "Sp. Def: " + pokemon.getSpDef(),
+                "Speed: " + pokemon.getSpeed()
+        };
+
+        gbc.gridwidth = 1;
+        for (int i = 0; i < leftStats.length; i++) {
+            gbc.gridx = 0;
+            gbc.gridy = i + 2;
+            statPanel.add(new JLabel(leftStats[i]), gbc);
+
+            gbc.gridx = 1;
+            statPanel.add(new JLabel(rightStats[i]), gbc);
+        }
+
+        ((JPanel) displayPanel.getParent()).add(statPanel);
+        statPanel.setVisible(true);
+        displayPanel.getParent().revalidate();
+        displayPanel.getParent().repaint();
+    }
+
+
+
+
+
+    //Allows functionality of scrolling through dex
 private void updateDisplay() {
     for (int i = 0; i < VISIBLE_ROWS; i++) {
         int index = scrollOffset + i;
@@ -81,7 +192,7 @@ private void updateDisplay() {
         }
 
 
-        // "Pokédex" label above screen--will be replaced depending on which dex is open
+        // "Pokédex" label above screen (will be replaced depending on which dex is open)
         JLabel titleLabel = new JLabel(dexName);
         titleLabel.setFont(new Font("Courier New", Font.BOLD, 24));
         titleLabel.setForeground(Color.WHITE);
@@ -125,26 +236,35 @@ private void updateDisplay() {
         basePanel.add(center);
 
 
+        //functionality for up and down arrows on D-pad
         upButton.setEnabled(true);
         upButton.addActionListener(e -> {
-            if (selectedIndex > 0) {
-                selectedIndex--;
-                if (selectedIndex < scrollOffset) {
-                    scrollOffset--;
-                }
-                updateDisplay();
+            if (pokedexGlobal.length == 0) return;
+            //when you are at index zero and press up it will wrap to first item
+            selectedIndex--;
+            if (selectedIndex < 0) {
+                selectedIndex = pokedexGlobal.length - 1;
+                scrollOffset = Math.max(0, pokedexGlobal.length - VISIBLE_ROWS);//when index is zero
+            } else if (selectedIndex < scrollOffset) {
+                scrollOffset--;
             }
+            updateDisplay();
         });
+
         downButton.setEnabled(true);
         downButton.addActionListener(e -> {
-            if (selectedIndex < pokedexGlobal.length - 1) {
-                selectedIndex++;
-                if (selectedIndex >= scrollOffset + VISIBLE_ROWS) {
-                    scrollOffset++;
-                }
-                updateDisplay();
+            if (pokedexGlobal.length == 0) return;
+            //when at last item and press down it wraps to first item
+            selectedIndex++;
+            if (selectedIndex >= pokedexGlobal.length) {
+                selectedIndex = 0;
+                scrollOffset = 0;
+            } else if (selectedIndex >= scrollOffset + VISIBLE_ROWS) {
+                scrollOffset++;
             }
+            updateDisplay();
         });
+
 
 
         //A and B buttons
@@ -152,9 +272,48 @@ private void updateDisplay() {
         buttonA.setBounds(340, 390, 40, 40); // Lowered to y=400
         basePanel.add(buttonA);
 
+        buttonA.setEnabled(true);
+        buttonA.addActionListener(e -> {
+            if (pokedexGlobal.length == 0) return;
+            Pokemon selected = pokedexGlobal[selectedIndex];
+            showPokemonStats(selected);
+        });
+
+
         CircleButton buttonB = new CircleButton("B", new Color(100, 100, 100));
         buttonB.setBounds(380, 420, 40, 40); // Lowered to y=370
         basePanel.add(buttonB);
+
+        buttonB.setEnabled(true);
+        buttonB.addActionListener(e -> {
+            if (statPanel != null) {
+                statPanel.setVisible(false);
+                displayPanel.getParent().remove(statPanel);
+                statPanel = null;
+            }
+            displayPanel.setVisible(true);
+            updateDisplay(); // restore selection highlight etc.
+
+            //fixes bug where keyboard up and down buttons don't work after switching panels
+            basePanel.requestFocusInWindow();
+        });
+
+        //Makes arrow keys and enter/delete on keyboard function the way D-pad and a/b buttons work
+        basePanel.setFocusable(true);
+        basePanel.requestFocusInWindow();
+        basePanel.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyPressed(KeyEvent e) {
+                switch (e.getKeyCode()) {
+                    case KeyEvent.VK_UP -> upButton.doClick();
+                    case KeyEvent.VK_DOWN -> downButton.doClick();
+                    case KeyEvent.VK_ENTER, KeyEvent.VK_SPACE -> buttonA.doClick();  // Show Pokémon stats
+                    case KeyEvent.VK_DELETE, KeyEvent.VK_BACK_SPACE -> buttonB.doClick();
+                }
+            }
+        });
+
+
 
         /*******************VISUAL ONLY ASPECTS*********************/
 
