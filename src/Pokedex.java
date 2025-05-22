@@ -75,7 +75,7 @@ public class Pokedex {
     }
 
     private void populateRegionalDex(int[] dexNumsRequired, Pokemon[] dex){
-        Pokemon target;//creates a new object to temporarily store a national pokemons info
+        Pokemon target;//creates a new object to temporarily store a national pokemon info
         for(int i = 0; i < dexNumsRequired.length; i++){
             target = nationalDex.get(dexNumsRequired[i]-1);//fills
             new Pokemon(target);//sends that targeted pokemon to be copied and put in placeholder array

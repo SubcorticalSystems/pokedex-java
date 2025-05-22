@@ -5,10 +5,10 @@ import java.awt.event.KeyEvent;
 import javax.swing.border.AbstractBorder;
 
 public class MyFrame extends JFrame {
-    private Pokemon[] pokedexGlobal;
-    private JLabel[] nameLabels = new JLabel[5];
+    final private Pokemon[] pokedexGlobal;
+    final private JLabel[] nameLabels = new JLabel[5];
     private int selectedIndex = 0;
-    private JPanel displayPanel;
+    final private JPanel displayPanel;
     private int scrollOffset = 0;
     private static final int VISIBLE_ROWS = 5;
     private JPanel statPanel;
@@ -111,7 +111,7 @@ public class MyFrame extends JFrame {
             statPanel.add(new JLabel(rightStats[i]), gbc);
         }
 
-        ((JPanel) displayPanel.getParent()).add(statPanel);
+        displayPanel.getParent().add(statPanel);
         statPanel.setVisible(true);
         displayPanel.getParent().revalidate();
         displayPanel.getParent().repaint();
@@ -249,6 +249,7 @@ private void updateDisplay() {
                 scrollOffset--;
             }
             updateDisplay();
+            basePanel.requestFocusInWindow();
         });
 
         downButton.setEnabled(true);
@@ -263,6 +264,7 @@ private void updateDisplay() {
                 scrollOffset++;
             }
             updateDisplay();
+            basePanel.requestFocusInWindow();
         });
 
 
@@ -277,6 +279,8 @@ private void updateDisplay() {
             if (pokedexGlobal.length == 0) return;
             Pokemon selected = pokedexGlobal[selectedIndex];
             showPokemonStats(selected);
+            //fixes bug where shortcut keys and the visual buttons cannot be used together
+            basePanel.requestFocusInWindow();
         });
 
 
