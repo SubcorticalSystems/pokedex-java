@@ -34,7 +34,7 @@ public class MainMenuFrame extends JFrame {
         addDexOption(buttonGrid, "Johto", Pokedex.johtoDex, "resources/icons/Johto_Map.png", false);
         addDexOption(buttonGrid, "Hoenn", Pokedex.hoennDex, "resources/icons/Hoenn_Map.png", false);
         addDexOption(buttonGrid, "Sinnoh", Pokedex.sinnohDex, "resources/icons/Sinnoh_Map.png", false);
-        addDexOption(buttonGrid, "Unova", Pokedex.johtoDex, "resources/icons/Unova_Map.png", false);
+        addDexOption(buttonGrid, "Unova", Pokedex.unovaDex, "resources/icons/Unova_Map.png", false);
         addDexOption(buttonGrid, "Kalos", Pokedex.hoennDex, "resources/icons/Kalos_Map.png", false);
         addDexOption(buttonGrid, "Alola", Pokedex.kantoDex, "resources/icons/Alola_Map.png", false);
         addDexOption(buttonGrid, "Galar", Pokedex.johtoDex, "resources/icons/Grookey_Map.png", false);

@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Working on how console interacts with user">
-      <change afterPath="$PROJECT_DIR$/resources/icons/genOneSprites/bulbasaur.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/icons/genOneSprites/ivysaur.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MainMenuFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MainMenuFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/RegionalDexFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegionalDexFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/UserInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,7 +126,7 @@
       <workItem from="1746453766530" duration="23049000" />
       <workItem from="1747848042643" duration="21086000" />
       <workItem from="1748028255756" duration="801000" />
-      <workItem from="1748030264996" duration="2221000" />
+      <workItem from="1748030264996" duration="4626000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
