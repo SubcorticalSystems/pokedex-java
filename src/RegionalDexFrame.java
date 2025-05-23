@@ -12,7 +12,7 @@ public class RegionalDexFrame extends JFrame {
     private int scrollOffset = 0;
     private static final int VISIBLE_ROWS = 5;
     private JPanel statPanel;
-//new JLabel(new ImageIcon("path/to/sprite.png")) // might need this later
+
 
     /* simplistic UI for statPanel
     private void showPokemonStats(Pokemon pokemon) {
@@ -67,16 +67,16 @@ public class RegionalDexFrame extends JFrame {
         gbc.gridwidth = 2;
         statPanel.add(nameLabel, gbc);
 
-        // Placeholder for sprite (top-right)
-        JLabel spritePlaceholder = new JLabel(" ");
-        spritePlaceholder.setPreferredSize(new Dimension(60, 60));
-        spritePlaceholder.setOpaque(true);
-        spritePlaceholder.setBackground(new Color(30, 100, 30));
+        // Sprites (top-right)
+        JLabel sprite = new JLabel(new ImageIcon("resources/icons/genOneSprites/ivysaur.png")); // might need this later
+        sprite.setPreferredSize(new Dimension(60, 60));
+        sprite.setOpaque(true);
+        sprite.setBackground(new Color(34, 139, 34));
         gbc.gridx = 2;
         gbc.gridy = 0;
         gbc.gridwidth = 1;
         gbc.gridheight = 3;
-        statPanel.add(spritePlaceholder, gbc);
+        statPanel.add(sprite, gbc);
 
         // Type(s)
         JLabel typeLabel = new JLabel("Type: " + pokemon.getTypeOne() +
@@ -153,7 +153,7 @@ private void updateDisplay() {
         this.pokedexGlobal = pokedex;
         setTitle("Pokédex");
         setSize(500, 600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        //setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setResizable(false);
 

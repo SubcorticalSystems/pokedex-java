@@ -33,7 +33,7 @@ public class MainMenuFrame extends JFrame {
         addDexOption(buttonGrid, "Kanto", Pokedex.kantoDex, "resources/icons/Kanto_Map.png", false);
         addDexOption(buttonGrid, "Johto", Pokedex.johtoDex, "resources/icons/Johto_Map.png", false);
         addDexOption(buttonGrid, "Hoenn", Pokedex.hoennDex, "resources/icons/Hoenn_Map.png", false);
-        addDexOption(buttonGrid, "Sinnoh", Pokedex.kantoDex, "resources/icons/Sinnoh_Map.png", false);
+        addDexOption(buttonGrid, "Sinnoh", Pokedex.sinnohDex, "resources/icons/Sinnoh_Map.png", false);
         addDexOption(buttonGrid, "Unova", Pokedex.johtoDex, "resources/icons/Unova_Map.png", false);
         addDexOption(buttonGrid, "Kalos", Pokedex.hoennDex, "resources/icons/Kalos_Map.png", false);
         addDexOption(buttonGrid, "Alola", Pokedex.kantoDex, "resources/icons/Alola_Map.png", false);
@@ -50,7 +50,7 @@ public class MainMenuFrame extends JFrame {
     }
 
 
-    private void addDexOption(JPanel parent, String name, Pokemon[] dex, String iconPath, boolean isNational) {
+    private void addDexOption(JPanel parent, String name, Pokemon[] pokedex, String iconPath, boolean isNational) {
         JPanel dexPanel = new JPanel(new BorderLayout());
         dexPanel.setBackground(Color.WHITE);
         dexPanel.setBorder(BorderFactory.createLineBorder(new Color(210, 210, 210), 1));
@@ -68,17 +68,18 @@ public class MainMenuFrame extends JFrame {
         button.setFocusPainted(false);
         button.setBackground(new Color(230, 230, 230));
         button.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
-        button.addActionListener(e -> new RegionalDexFrame(name + " Pokédex", dex).setVisible(true));
+        button.addActionListener(e -> new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true));
+
 
         dexPanel.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                if(isNational){
-                    new NationalDexFrame(name, dex).setVisible(true);
+            public void mousePressed(MouseEvent e) {
+                if (isNational) {
+                    new NationalDexFrame(name, pokedex).setVisible(true);
                 } else {
-                new RegionalDexFrame(name + " Pokédex", dex).setVisible(true);
-            }
+                    new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
                 }
+            }
 
             @Override
             public void mouseEntered(MouseEvent e) {
@@ -105,62 +106,3 @@ public class MainMenuFrame extends JFrame {
     }
 }
 
-
-    /*
-    private void addDexOption(JPanel parent, String name, Pokemon[] dex, String iconPath, boolean isNational) {
-        JPanel dexPanel = new JPanel(new BorderLayout());
-        dexPanel.setPreferredSize(new Dimension(140, 140));
-        dexPanel.setBackground(Color.WHITE);
-        dexPanel.setBorder(BorderFactory.createLineBorder(new Color(200, 200, 200)));
-
-        // JLabel for the region map icon
-        ImageIcon icon = loadScaledIcon(iconPath, 100, 100);
-        JLabel iconLabel = new JLabel(icon);
-        iconLabel.setHorizontalAlignment(JLabel.CENTER);
-        iconLabel.setVerticalAlignment(JLabel.CENTER);
-        dexPanel.add(iconLabel, BorderLayout.CENTER);
-
-        // JLabel for the region name
-        JLabel nameLabel = new JLabel(name, JLabel.CENTER);
-        nameLabel.setFont(new Font("Segoe UI", Font.PLAIN, 12));
-        nameLabel.setBackground(new Color(240, 240, 240));
-        nameLabel.setOpaque(true);
-        dexPanel.add(nameLabel, BorderLayout.SOUTH);
-
-        // Add mouse listener to make the entire panel clickable
-        dexPanel.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                if (isNational) {
-                    new NationalDexFrame("National Pokédex", dex).setVisible(true);
-                } else {
-                    new RegionalDexFrame(name + " Pokédex", dex).setVisible(true);
-                }
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-                dexPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
-                dexPanel.setBackground(new Color(245, 245, 245));
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-                dexPanel.setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
-                dexPanel.setBackground(Color.WHITE);
-            }
-        });
-
-
-
-        parent.add(dexPanel);
-    }
-    private ImageIcon loadScaledIcon(String path, int width, int height) {
-        ImageIcon icon = new ImageIcon(path);
-        Image img = icon.getImage().getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return new ImageIcon(img);
-    }
-
-
-}
-*/

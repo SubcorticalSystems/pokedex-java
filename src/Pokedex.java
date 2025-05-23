@@ -20,7 +20,8 @@ public class Pokedex {
     static Pokemon[] johtoDex = new Pokemon[256];
     static Pokemon[] genThree = new Pokemon[135];
     static Pokemon[] hoennDex = new Pokemon[211];
-
+    static Pokemon[] genFour = new Pokemon[107];
+    static Pokemon[] sinnohDex = new Pokemon[210];
     //main method
     public static void main(String[] args) throws IOException {
         //Creates a new pokedex Object to store all the pokemon into
@@ -32,11 +33,13 @@ public class Pokedex {
         pokedex.createGenOne();
         pokedex.createGenTwo();
         pokedex.createGenThree();
+        pokedex.createGenFour();
 
         //Creates Regional Dex
         pokedex.createKantoDex();
         pokedex.createJohtoDex();
         pokedex.createHoennDex();
+        pokedex.createSinnohDex();
 
         //Calls method for user input
         //UserInteraction.fetchUserInput();
@@ -64,10 +67,19 @@ public class Pokedex {
             throw new RuntimeException(e);
         }finally{
             reader.close();
+            //System.out.println(nationalDex);
         }
+    }
+//prints dex for bug testing
+    private static <T> void printPokedex(T[] pokedex) {
+        System.out.println(Arrays.toString(pokedex)
+                .replace("[", "")
+                .replace("]", "")
+                .replace(", ", ""));
     }
 //recieves input from readCSV in order to create a Pokemon Object
     private Pokemon getPokemon(int i, String[] data) {
+        //uses i plus a number to adjust what order the data is being put into pokemon object
         Pokemon pokemon = new Pokemon();
         pokemon.setName(data[i]);
         pokemon.setDexNum(Integer.parseInt(data[i+1]));
@@ -84,11 +96,15 @@ public class Pokedex {
 
     private void populateRegionalDex(int[] dexNumsRequired, Pokemon[] dex){
         Pokemon target;//creates a new object to temporarily store a national pokemon info
-        for(int i = 0; i < dexNumsRequired.length; i++){
-            target = nationalDex.get(dexNumsRequired[i]-1);//fills
-            new Pokemon(target);//sends that targeted pokemon to be copied and put in placeholder array
-            dex[i] = placeholderDex.get(i); //fills regional dex array
-            dex[i].setDexNum(i+1); //account for zero-index of array
+        try {
+            for (int i = 0; i < dexNumsRequired.length; i++) {
+                target = nationalDex.get(dexNumsRequired[i] - 1);//fills
+                new Pokemon(target);//sends that targeted pokemon to be copied and put in placeholder array
+                dex[i] = placeholderDex.get(i); //fills regional dex array
+                dex[i].setDexNum(i + 1); //account for zero-index of array
+            }
+        }catch(ArrayIndexOutOfBoundsException e) {
+            System.out.println(dexNumsRequired.length);
         }
         //makes sure that the dex is cleared for when it is reused by next Generation's Pokedex
         placeholderDex.clear();
@@ -160,9 +176,52 @@ public class Pokedex {
     }
 
     //#387-493
+        private void createGenFour(){
+        int counter = 0;
+        for(int i = 386; i < 493; i++){
+            genFour[counter] = nationalDex.get(i);
+            counter++;
+        }
+            //printPokedex(genFour);
+        }
 
+        private void createSinnohDex(){
+        //#479 rotom has multiple forms
+            //412 and 413 have three versions each
+            //gastrodon at 423 m&f count as two pokemon same with 422 shellos
+            //487 has two forms
+            /*
+            int[] sinnohDexNumsRequired = {
+                    387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,63,64,65,129,130,
+                    406,315,407,41,42,169,74,75,76,95,208,408,409,410,411,66,67,68,54,55,412,412,413,
+                    413,414,265,266,267,268,269,415,416,417,418,419,420,421,422,422,423,214,190,424,425,
+                    426,427,428,92,93,94,200,429,198,430,431,432,118,119,
+                    339,340,433,358,434,435,307,308,436,437,77,78,438,185,439,122,440,113,242,173,35,36,
+                    441,172,25,26,163,164,442,443,444,445,446,143,201,447,448,194,195,278,279,203,449,450,
+                    298,183,184,451,452,453,454,455,223,224,456,457,72,73,349,350,458,226,459,460,215,461,480,
+                    481,482,483,484,490,479,207,472,299,476,280,281,282,475,108,463,133,134,135,136,196,197,470,
+                    471,333,334,175,176,468,228,229,81,82,462,114,465,193,469,357,111,112,464,355,356,477,137,233,
+                    474,123,212,239,125,466,240,126,467,220,221,473,361,362,478,359,487
+            };
+
+             */
+            int[] sinnohDexNumsRequired = {
+                    387,388,389,390,391,392,393,394,395,396,397,398,399,400,401,402,403,404,405,63,64,65,129,130,
+                    406,315,407,41,42,169,74,75,76,95,208,408,409,410,411,66,67,68,54,55,412,413,414,265,266,267,268,269,
+                    415,416,417,418,419,420,421,422,423,214,190,424,425,426,427,428,92,93,94,200,429,198,430,431,432,
+                    118,119,339,340,433,358,434,435,307,308,436,437,77,78,438,185,439,122,440,113,242,173,35,36,
+                    441,172,25,26,163,164,442,443,444,445,446,143,201,447,448,194,195,278,279,203,449,450,298,
+                    183,184,451,452,453,454,455,223,224,456,457,72,73,349,350,458,226,459,460,215,461,480,481,
+                    482,483,484,490,479,207,472,299,476,280,281,282,475,108,463,133,134,135,136,196,197,470,
+                    471,333,334,175,176,468,228,229,81,82,462,114,465,193,469,357,111,112,464,355,356,477,137,233,
+                    474,123,212,239,125,466,240,126,467,220,221,473,361,362,478,359,487
+            };
+
+            populateRegionalDex(sinnohDexNumsRequired, sinnohDex);
+        }
 
     //#494-649
+
     //#650-721
     //#722-809
     //#810-905
