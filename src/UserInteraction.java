@@ -55,15 +55,15 @@ public class UserInteraction {
                 switch (num) {
                     case 1:
                         pokedexName = "Kanto Pokedex";
-                        setUpDexGUI(Pokedex.kantoDex, pokedexName);
+                        setUpRegionalDexGUI(Pokedex.kantoDex, pokedexName);
                         break;
                     case 2:
                         pokedexName = "Johto Pokedex";
-                        setUpDexGUI(Pokedex.johtoDex, pokedexName);
+                        setUpRegionalDexGUI(Pokedex.johtoDex, pokedexName);
                         break;
                     case 3:
                         pokedexName = "Hoenn Pokedex";
-                        setUpDexGUI(Pokedex.hoennDex, pokedexName);
+                        setUpRegionalDexGUI(Pokedex.hoennDex, pokedexName);
                         break;
                 }
             } else{
@@ -77,9 +77,9 @@ public class UserInteraction {
 
     }
 
-    private static void setUpDexGUI(Pokemon[] dexContents, String dexName) {
+    private static void setUpRegionalDexGUI(Pokemon[] dexContents, String dexName) {
 
-        new MyFrame(dexName, dexContents).setVisible(true);
+        new RegionalDexFrame(dexName, dexContents).setVisible(true);
 
     }
 }

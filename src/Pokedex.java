@@ -1,3 +1,4 @@
+import javax.swing.*;//for swing utilities
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -38,7 +39,14 @@ public class Pokedex {
         pokedex.createHoennDex();
 
         //Calls method for user input
-        UserInteraction.fetchUserInput();
+        //UserInteraction.fetchUserInput();
+         // example method to populate dex arrays
+
+                SwingUtilities.invokeLater(() -> {
+                    new MainMenuFrame().setVisible(true);
+                });
+
+
     }
 
     //Reads from .csv to populate National Dex ArrayList

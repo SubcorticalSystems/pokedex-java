@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.border.AbstractBorder;
 
-public class MyFrame extends JFrame {
+public class RegionalDexFrame extends JFrame {
     final private Pokemon[] pokedexGlobal;
     final private JLabel[] nameLabels = new JLabel[5];
     private int selectedIndex = 0;
@@ -149,7 +149,7 @@ private void updateDisplay() {
 
     /*******************BEGINS FRAME*************************/
 
-    public MyFrame(String dexName, Pokemon[] pokedex) {
+    public RegionalDexFrame(String dexName, Pokemon[] pokedex) {
         this.pokedexGlobal = pokedex;
         setTitle("Pokédex");
         setSize(500, 600);

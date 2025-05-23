@@ -5,9 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7f388f37-5622-4f8e-b25c-8f09dd1f2e79" name="Changes" comment="Working on how console interacts with user">
+      <change afterPath="$PROJECT_DIR$/resources/icons/Alola_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Galar_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Grookey_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Hoenn_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Johto_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Kalos_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Kanto_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/National_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Paldea_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Sinnoh_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/Unova_Map.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/icons/books.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/MainMenuFrame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NationalDexFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/MyFrame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/MyFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/RegionalDexFrame.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Pokedex.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Pokedex.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/UserInteraction.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/UserInteraction.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,17 +82,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/resources/icons" />
       <recent name="$PROJECT_DIR$/resources" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Pokedex">
-    <configuration name="MyFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="MyFrame" />
-      <module name="Pokedex" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Pokedex" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Pokedex" />
       <module name="Pokedex" />
@@ -85,9 +94,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="RegionalDexFrame" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="RegionalDexFrame" />
+      <module name="Pokedex" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MyFrame" />
+        <item itemvalue="Application.RegionalDexFrame" />
       </list>
     </recent_temporary>
   </component>
@@ -123,7 +139,7 @@
       <workItem from="1738963304369" duration="2535000" />
       <workItem from="1741979568966" duration="156000" />
       <workItem from="1746453766530" duration="23049000" />
-      <workItem from="1747848042643" duration="5172000" />
+      <workItem from="1747848042643" duration="11868000" />
     </task>
     <task id="LOCAL-00001" summary="First Deployment of Pokedex written in java">
       <option name="closed" value="true" />
