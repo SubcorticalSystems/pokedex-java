@@ -74,11 +74,46 @@ public class MainMenuFrame extends JFrame {
         dexPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
+                /*
                 if (isNational) {
                     new NationalDexFrame(name, pokedex).setVisible(true);
                 } else {
                     new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
                 }
+
+                 */
+                //Kalos has 3 mini dex comprising its regional dex so we need to give an option
+                //which to pass to Regional dex frame
+                if (name.equals("Kalos")) {
+                    String[] kalosOptions = {"Central Kalos Dex", "Coastal Kalos Dex", "Mountain Kalos Dex"};
+                    String selected = (String) JOptionPane.showInputDialog(//option pane that will be clickable before launch
+                            null,
+                            "Choose a Kalos Dex:",
+                            "Kalos Regional Dex",
+                            JOptionPane.PLAIN_MESSAGE,
+                            null,
+                            kalosOptions,
+                            kalosOptions[0]
+                    );
+
+                    if (selected != null) {
+                        Pokemon[] selectedDex = switch (selected) {
+                            case "Central Kalos Dex" -> Pokedex.centralKalosDex;
+                            case "Coastal Kalos Dex" -> Pokedex.coastalKalosDex;
+                            case "Mountain Kalos Dex" -> Pokedex.mountainKalosDex;
+                            default -> null;
+                        };
+
+                        if (selectedDex != null) {//once an option is selecting and okay is pressed it will pass like normal and open regional dex
+                            new RegionalDexFrame(selected, selectedDex).setVisible(true);
+                        }
+                    }
+                } else if (isNational) {
+                    new NationalDexFrame(name, pokedex).setVisible(true);
+                } else {
+                    new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
+                }
+
             }
 
             @Override
