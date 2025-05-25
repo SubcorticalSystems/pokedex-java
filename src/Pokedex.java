@@ -30,10 +30,6 @@ public class Pokedex {
     static Pokemon[] coastalKalosDex = new Pokemon[153];
     static Pokemon[] mountainKalosDex = new Pokemon[151];
     static Pokemon[] genSeven = new Pokemon[81];
-    static Pokemon[] melemeleAlolaDex = new Pokemon[80];
-    static Pokemon[] akalaAlolaDex = new Pokemon[81];
-    static Pokemon[] ulaulaAlolaDex = new Pokemon[82];
-    static Pokemon[] poniAlolaDex = new Pokemon[81];
     static Pokemon[] alolaDex = new Pokemon[403];
 
 
@@ -70,6 +66,7 @@ public class Pokedex {
         pokedex.checkForDuplicateDexNumbersInRegion(centralKalosDex, "Central Kalos");
         pokedex.checkForDuplicateDexNumbersInRegion(coastalKalosDex, "Coastal Kalos");
         pokedex.checkForDuplicateDexNumbersInRegion(mountainKalosDex, "Mountain Kalos");
+        pokedex.checkForDuplicateDexNumbersInRegion(alolaDex, "Alola");
         //Calls method for user input
         //UserInteraction.fetchUserInput();
         // example method to populate dex arrays
@@ -340,39 +337,7 @@ populateRegionalDex(unovaDexNumsRequired, unovaDex);
     }
 
     private void createAlolaDex(){
-        /*
-        int[] melemeleDexNumsRequired = {
-                722, 723, 724, 725, 726, 727, 728, 729, 730, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
-                28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51,
-                52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76,
-                77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103,
-                104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
-        };
-        populateRegionalDex(melemeleDexNumsRequired, melemeleAlolaDex);
-
-        int[] akalaDexNumsRequired = {
-                722, 723, 724, 725, 726, 727, 728, 729, 730, 10, 11, 12, 13,
-                14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35,
-                36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60,
-                61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86,
-                87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109,
-                110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
-        };
-        populateRegionalDex(akalaDexNumsRequired, akalaAlolaDex);
-
-        int[] ulaulaDexNumsRequired = {
-                722, 723, 724, 725, 726, 727, 728, 729, 730, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
-        };
-        populateRegionalDex(ulaulaDexNumsRequired, ulaulaAlolaDex);
-
-        int[] poniDexNumsRequired = {
-                722, 723, 724, 725, 726, 727, 728, 729, 730, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120
-        };
-        populateRegionalDex(poniDexNumsRequired, poniAlolaDex);
-
-         */
-
-//741 has 4 forms
+            //741 has 4 forms for oricorio
         int[] alolaDexNumsRequired = {
                 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 19,
                 20, 10, 11, 12, 165, 166, 167, 168, 427, 428, 686, 687, 570, 571, 676, 172,
@@ -397,31 +362,8 @@ populateRegionalDex(unovaDexNumsRequired, unovaDex);
                 802, 807
         };
         populateRegionalDex(alolaDexNumsRequired, alolaDex);
-/*
-        int[] dexNumRequired = {
-                126, 467, 636, 637, 759, 760, 761, 762, 763, 764, 127, 163, 164, 352, 765, 766, 704, 705, 706, 351,
-                767, 768, 120, 121, 769, 770, 138, 139, 140, 141, 345, 346, 347, 348, 408, 409, 410, 411, 566, 567,
-                564, 565, 696, 697, 698, 699, 246, 247, 248, 708, 709, 177, 178, 299, 476, 771, 170, 171, 772, 773,
-                803, 804, 718, 568, 569, 572, 573, 204, 205, 227, 132, 173, 35, 36, 605, 606, 774, 374, 375, 376,
-                137, 233, 474, 674, 675, 775, 324, 776, 228, 229, 702, 777, 309, 310, 239, 125, 466, 74, 75, 76,
-                551, 552, 553, 328, 329, 330, 443, 444, 445, 343, 344, 622, 623, 707, 778, 353, 354, 592, 593, 779,
-                780, 359, 361, 478, 215, 461, 27, 28, 37, 38, 582, 583, 584, 559, 560, 624, 625, 209, 210, 422,
-                423, 369, 781, 318, 319, 690, 691, 692, 693, 320, 321, 131, 357, 102, 103, 341, 342, 619, 620, 782,
-                783, 784, 587, 123, 212, 214, 190, 424, 667, 668, 200, 429, 621, 108, 463, 447, 448, 147, 148, 149,
-                142, 785, 786, 787, 788, 789, 790, 791, 792, 793, 805, 806, 794, 795, 796, 797, 798, 799, 800, 801,
-                802, 807
-        };
 
- */
-/*
-        printPokedex(melemeleAlolaDex);
-        printPokedex(akalaAlolaDex);
-        printPokedex(ulaulaAlolaDex);
-        printPokedex(poniAlolaDex);
-
- */
-
-
+        //printPokedex(alolaDex);
     }
     //#810-905
     //#906-1025
