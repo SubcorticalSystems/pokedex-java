@@ -38,7 +38,7 @@ public class MainMenuFrame extends JFrame {
         addDexOption(buttonGrid, "Kalos", Pokedex.coastalKalosDex, "resources/icons/Kalos_Map.png", false);
         addDexOption(buttonGrid, "Alola", Pokedex.alolaDex, "resources/icons/Alola_Map.png", false);
         addDexOption(buttonGrid, "Galar", Pokedex.galarDex, "resources/icons/Grookey_Map.png", false);
-        addDexOption(buttonGrid, "Paldea", Pokedex.hoennDex, "resources/icons/Paldea_Map.png", false);
+        addDexOption(buttonGrid, "Paldea", Pokedex.paldeaDex, "resources/icons/Paldea_Map.png", false);
         mainPanel.add(buttonGrid, BorderLayout.CENTER);
 
         // Footer
