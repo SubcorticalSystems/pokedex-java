@@ -13,35 +13,6 @@ public class RegionalDexFrame extends JFrame {
     private static final int VISIBLE_ROWS = 5;
     private JPanel statPanel;
 
-
-    /* simplistic UI for statPanel
-    private void showPokemonStats(Pokemon pokemon) {
-        displayPanel.setVisible(false); // hide list
-        if (statPanel != null) {
-            statPanel.setVisible(false);
-            displayPanel.getParent().remove(statPanel);
-        }
-
-        statPanel = new JPanel();
-        statPanel.setBackground(new Color(34, 139, 34));
-        statPanel.setBounds(20, 20, 260, 160);
-        statPanel.setLayout(new GridLayout(7, 1)); // 7 rows for different stats
-
-        statPanel.add(new JLabel(String.format("#%04d %s", pokemon.getDexNum(), pokemon.getName()), SwingConstants.CENTER));
-        statPanel.add(new JLabel("Type: " + pokemon.getTypeOne() + (pokemon.getTypeTwo().isEmpty() ? "" : " / " + pokemon.getTypeTwo())));
-        statPanel.add(new JLabel("HP: " + pokemon.getHp()));
-        statPanel.add(new JLabel("Attack: " + pokemon.getAtk()));
-        statPanel.add(new JLabel("Defense: " + pokemon.getDef()));
-        statPanel.add(new JLabel("Sp. Atk: " + pokemon.getSpAtk()));
-        statPanel.add(new JLabel("Sp. Def: " + pokemon.getSpDef()));
-        statPanel.add(new JLabel("Speed: " + pokemon.getSpeed()));
-
-        ((JPanel) displayPanel.getParent()).add(statPanel);
-        statPanel.setVisible(true);
-        displayPanel.getParent().revalidate();
-        displayPanel.getParent().repaint();
-    }
-     */
     //more advanced UI for statPanel which includes ability to add sprites
     private void showPokemonStats(Pokemon pokemon) {
         displayPanel.setVisible(false);
@@ -67,8 +38,9 @@ public class RegionalDexFrame extends JFrame {
         gbc.gridwidth = 2;
         statPanel.add(nameLabel, gbc);
 
+        /*
         // Sprites (top-right)
-        JLabel sprite = new JLabel(new ImageIcon("resources/icons/genOneSprites/ivysaur.png")); // might need this later
+        JLabel sprite = new JLabel(new ImageIcon("resources/icons/genOneSprites/(...).png")); // might need this later
         sprite.setPreferredSize(new Dimension(60, 60));
         sprite.setOpaque(true);
         sprite.setBackground(new Color(34, 139, 34));
@@ -77,6 +49,7 @@ public class RegionalDexFrame extends JFrame {
         gbc.gridwidth = 1;
         gbc.gridheight = 3;
         statPanel.add(sprite, gbc);
+         */
 
         // Type(s)
         JLabel typeLabel = new JLabel("Type: " + pokemon.getTypeOne() +

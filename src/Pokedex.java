@@ -5,8 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Scanner;
 
 public class Pokedex {
     final String pokeFile = "resources/pokemon.csv";
@@ -66,10 +64,7 @@ public class Pokedex {
         pokedex.createGalarDex();
         pokedex.createPaldeaDex();
 
-        //Calls method for user input
-        //UserInteraction.fetchUserInput();
-        // example method to populate dex arrays
-
+        //makes sure that GUI interface launches
         SwingUtilities.invokeLater(() -> {
             new MainMenuFrame().setVisible(true);
         });
@@ -207,7 +202,6 @@ public class Pokedex {
                 368, 369, 222, 170, 171, 370, 116, 117, 230, 371, 372, 373, 374, 375, 376, 377, 378, 379, 380,
                 381, 382, 383, 384, 385, 386
         };
-        //System.out.println(hoennDexNumsRequired.length);
         populateRegionalDex(hoennDexNumsRequired, hoennDex);
     }
 
@@ -218,14 +212,9 @@ public class Pokedex {
             genFour[counter] = nationalDex.get(i);
             counter++;
         }
-        //printPokedex(genFour);
     }
 
     private void createSinnohDex() {
-        //#479 rotom has multiple forms
-        //#412 and #413 have three versions each for wormadorm
-        //gastrodon at #423 male and female count as two pokemon same with #422 shellos
-        //#487 has two forms for giratina
 
         int[] sinnohDexNumsRequired = {
                 387, 388, 389, 390, 391, 392, 393, 394, 395, 396, 397, 398, 399, 400, 401, 402, 403, 404, 405, 63, 64, 65, 129, 130,
@@ -250,7 +239,7 @@ private void createGenFive(){
             genFive[counter] = nationalDex.get(i);
             counter++;
         }
-        //printPokedex(genFive);
+
 }
 
 private void createUnovaDex(){
@@ -265,7 +254,7 @@ private void createUnovaDex(){
             613, 614, 615, 616, 617, 618, 619, 620, 621, 622, 623, 624, 625, 626, 627, 628, 629,
             630, 631, 632, 633, 634, 635, 636, 637, 638, 639, 640, 641, 642, 643, 644, 645, 646, 647, 648, 649
     };
-populateRegionalDex(unovaDexNumsRequired, unovaDex);
+        populateRegionalDex(unovaDexNumsRequired, unovaDex);
 }
 
 
@@ -321,22 +310,18 @@ populateRegionalDex(unovaDexNumsRequired, unovaDex);
                 333, 334, 621, 633, 634, 635, 147, 148, 149, 716, 717, 718, 150
         };
         populateRegionalDex(kalosMountainDexNumsRequired, mountainKalosDex);
-
-        //printPokedex(centralKalosDex);
-        //printPokedex(coastalKalosDex);
-        //printPokedex(mountainKalosDex);
     }
     //#722-809
     private void createGenSeven(){
         int counter = 0;
         for (int i = 721; i < 809; i++) {
-            //genSeven[counter] = nationalDex.get(i);
+            genSeven[counter] = nationalDex.get(i);
             counter++;
         }
     }
 
     private void createAlolaDex(){
-            //741 has 4 forms for oricorio
+
         int[] alolaDexNumsRequired = {
                 722, 723, 724, 725, 726, 727, 728, 729, 730, 731, 732, 733, 734, 735, 19,
                 20, 10, 11, 12, 165, 166, 167, 168, 427, 428, 686, 687, 570, 571, 676, 172,
@@ -363,7 +348,6 @@ populateRegionalDex(unovaDexNumsRequired, unovaDex);
         };
         populateRegionalDex(alolaDexNumsRequired, alolaDex);
 
-        //printPokedex(alolaDex);
     }
     //#810-905
     private void createGenEight(){
@@ -375,93 +359,7 @@ populateRegionalDex(unovaDexNumsRequired, unovaDex);
     }
 
     private void createGalarDex(){
-        //duplicates:
-        /*
-| # | Appearances |
-| ------ | ----- |
-| 263    | 2     |
-| 264    | 2     |
-| 37     | 2     |
-| 38     | 2     |
-| 50     | 2     |
-| 51     | 2     |
-| 52     | 3     |
-| 53     | 2     |
-| 26     | 2     |
-| 550    | 2     |
-| 618    | 2     |
-| 422    | 2     |
-| 423    | 2     |
-| 222    | 2     |
-| 110    | 2     |
-| 592    | 2     |
-| 593    | 2     |
-| 849    | 2     |
-| 562    | 2     |
-| 77     | 2     |
-| 78     | 2     |
-| 876    | 2     |
-| 122    | 2     |
-| 554    | 2     |
-| 555    | 4     |
-| 479    | 6     |
-| 888    | 2     |
-| 889    | 2     |
-*/
-        /*
-        int[] galarDexNumsRequired = {
-                810, 811, 812, 813, 814, 815, 816, 817, 818,
-                824, 825, 826, 10, 11, 12, 736, 737, 738,
-                163, 164, 821, 822, 823, 819, 820, 519, 520,
-                521, 827, 828, 263, 263, 264, 264, 862, 831,
-                832, 270, 271, 272, 273, 274, 275, 833, 834,
-                509, 510, 835, 836, 659, 660, 572, 573,
-                761, 762, 763, 43, 44, 45, 182, 406, 315,
-                407, 278, 279, 595, 596, 309, 310, 37, 37,
-                38, 38, 58, 59, 582, 583, 584, 220, 221,
-                473, 225, 361, 362, 478, 343, 344, 749, 750,
-                557, 558, 622, 623, 517, 518, 177, 178, 759,
-                760, 459, 460, 98, 99, 194, 195,
-                341, 342, 290, 291, 292, 236, 106, 107, 237,
-                674, 675, 599, 600, 601, 415, 416, 436, 437,
-                280, 281, 282, 475, 425, 426, 829, 830, 420,
-                421, 434, 435, 535, 536, 537, 355, 356, 477,
-                66, 67, 68, 92, 93, 94, 129, 130, 118, 119,
-                223, 224, 90, 91,
-                349, 350, 550, 550, 746, 771, 568, 569, 850, 851,
-                837, 838, 839, 50, 50, 51, 51, 529, 530, 524,
-                525, 526, 532, 533, 534, 527, 528, 714, 715,
-                95, 208, 846, 847, 52, 52, 52, 863, 53, 53,
-                868, 869, 742, 743, 597, 598, 710, 711, 172,
-                25, 26, 26, 133, 134, 135, 136, 196, 197,
-                470, 471, 700,
-                840, 841, 842, 677, 678, 678, 684, 685, 682, 683,
-                751, 752, 360, 202, 83, 83, 865, 170, 171, 453,
-                454, 559, 560, 618, 618, 213, 339, 340, 422, 422,
-                423, 423, 767, 768, 688, 689, 222, 222, 864, 859,
-                860, 861, 856, 857, 858, 757, 758, 624, 625, 538,
-                539, 109, 110, 110,
-                438, 185, 173, 35, 36, 175, 176, 468, 446, 143,
-                546, 547, 111, 112, 464, 574, 575, 576, 577, 578,
-                579, 588, 589, 616, 617, 605, 606, 613, 614, 627,
-                628, 629, 630, 451, 452, 607, 608, 609, 686, 687,
-                215, 461, 302, 303, 556, 561, 447, 448, 324,
-                778, 878, 879, 211, 592, 592, 593, 593, 747, 748,
-                845, 848, 849, 849, 843, 844, 449, 450, 632, 631,
-                694, 695, 701, 328, 329, 330, 610, 611, 612, 562,
-                562, 867, 563, 679, 680, 681, 77, 77, 78, 78,
-                854, 855, 876, 876, 708, 709, 755, 756, 765, 766,
-                877, 870, 780, 776, 777, 872, 873,
-                852, 853, 871, 458, 226, 320, 321, 712, 713, 781,
-                131, 337, 338, 439, 122, 122, 866, 554, 554, 555,
-                555, 555, 555, 874, 875, 884, 479, 479, 479, 479,
-                479, 479, 132, 880, 881, 882, 883, 4, 5, 6,
-                772, 773, 246, 247, 248, 633, 634, 635, 704, 705,
-                706, 782, 783, 784, 885, 886, 887, 888, 888, 889,
-                889, 890
-        };
 
-         */
         int[] galarDexNumsRequired = {
                 810, 811, 812, 813, 814, 815, 816, 817, 818,
                 824, 825, 826, 10, 11, 12, 736, 737, 738,

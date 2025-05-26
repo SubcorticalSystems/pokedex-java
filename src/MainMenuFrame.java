@@ -74,14 +74,7 @@ public class MainMenuFrame extends JFrame {
         dexPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                /*
-                if (isNational) {
-                    new NationalDexFrame(name, pokedex).setVisible(true);
-                } else {
-                    new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
-                }
 
-                 */
                 //Kalos has 3 mini dex comprising its regional dex so we need to give an option
                 //which to pass to Regional dex frame
                 if (name.equals("Kalos")) {
@@ -109,7 +102,19 @@ public class MainMenuFrame extends JFrame {
                         }
                     }
                 } else if (isNational) {
-                    new NationalDexFrame(name, pokedex).setVisible(true);
+                    new NationalDexFrame("National Dex",
+                            Pokedex.nationalDex.toArray(new Pokemon[0]),
+                            Pokedex.genOne,
+                            Pokedex.genTwo,
+                            Pokedex.genThree,
+                            Pokedex.genFour,
+                            Pokedex.genFive,
+                            Pokedex.genSix,
+                            Pokedex.genSeven,
+                            Pokedex.genEight,
+                            Pokedex.genNine
+                    ).setVisible(true);
+
                 } else {
                     new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
                 }
