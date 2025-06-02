@@ -162,13 +162,14 @@ public class NationalDexFrame extends JFrame {
         });
     }
 
+    //takes the array created in Pokedex.java and passed by MainMenuFrame.java
     private void filterByGeneration(int genIndex) {
         listModel.clear();
         for (Pokemon p : generations[genIndex]) {
             if (p != null) listModel.addElement(p);
         }
     }
-
+    //attached to show all button so we can go back after filtering
     private void showAllPokemon() {
         listModel.clear();
         Arrays.stream(allPokemon).forEach(listModel::addElement);
@@ -180,7 +181,7 @@ public class NationalDexFrame extends JFrame {
         panel.setBackground(listBg);
         panel.setBorder(new EmptyBorder(15, 20, 15, 20));
 
-        // Title: Name and Dex #
+        //Title: Name and Dex #
         JLabel nameLabel = new JLabel(p.getName() + "  (" + String.format("#%03d", p.getDexNum()) + ")");
         nameLabel.setFont(new Font("Segoe UI", Font.BOLD, 18));
         nameLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -188,7 +189,7 @@ public class NationalDexFrame extends JFrame {
         panel.add(nameLabel);
         panel.add(Box.createVerticalStrut(10));
 
-        // Types
+        //Types
         JPanel typePanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 10, 0));
         typePanel.setBackground(listBg);
 
@@ -215,7 +216,7 @@ public class NationalDexFrame extends JFrame {
 
         JOptionPane.showMessageDialog(this, panel, p.getName() + " Stats", JOptionPane.PLAIN_MESSAGE);
     }
-
+    //sets up the rectangular box as a label to display pokemon's type in popup window
     private JLabel createTypeLabel(String type) {
         JLabel label = new JLabel(type);
         label.setFont(bodyFont);
@@ -239,7 +240,7 @@ public class NationalDexFrame extends JFrame {
         panel.add(statLabel);
         panel.add(statValueLabel);
     }
-//colors to use for each type
+//colors to use for each type like in the newer games
     private Color getTypeColor(String type) {
         return switch (type.toLowerCase()) {
             case "fire" -> new Color(255, 108, 48);
@@ -263,6 +264,7 @@ public class NationalDexFrame extends JFrame {
             default -> new Color(180, 180, 180);
         };
     }
+
 
     private static class PokemonCellRenderer extends JLabel implements ListCellRenderer<Pokemon> {
 

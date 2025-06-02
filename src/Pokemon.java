@@ -1,5 +1,5 @@
 public class Pokemon {
-
+    //basic variables I will need
         private int dexNum;
         private String name;
         private String typeOne;
@@ -95,6 +95,7 @@ public class Pokemon {
     public int getSpeed() {return speed;}
     public void setSpeed(int speed) {this.speed = speed;}
 
+    //used for displaying to console when debugging
     @Override
     public String toString() {
         return "\n#" + dexNum + " " + name + "\n" + typeOne + " " + typeTwo

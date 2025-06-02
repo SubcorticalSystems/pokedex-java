@@ -38,7 +38,7 @@ public class RegionalDexFrame extends JFrame {
         gbc.gridwidth = 2;
         statPanel.add(nameLabel, gbc);
 
-        /*
+        /* leaving this in case I decide to scale in future and add more functionality
         // Sprites (top-right)
         JLabel sprite = new JLabel(new ImageIcon("resources/icons/genOneSprites/(...).png")); // might need this later
         sprite.setPreferredSize(new Dimension(60, 60));
@@ -51,7 +51,7 @@ public class RegionalDexFrame extends JFrame {
         statPanel.add(sprite, gbc);
          */
 
-        // Type(s)
+        //Type(s)
         JLabel typeLabel = new JLabel("Type: " + pokemon.getTypeOne() +
                 (pokemon.getTypeTwo().isEmpty() ? "" : " / " + pokemon.getTypeTwo()));
         typeLabel.setFont(new Font("Monospaced", Font.PLAIN, 12));
@@ -62,7 +62,7 @@ public class RegionalDexFrame extends JFrame {
         gbc.gridheight = 1;
         statPanel.add(typeLabel, gbc);
 
-        // Stats in two columns
+        //Makes it so stats are shown in two columns to fit the smaller green panel
         String[] leftStats = {
                 "HP: " + pokemon.getHp(),
                 "Attack: " + pokemon.getAtk(),

@@ -4,7 +4,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 public class MainMenuFrame extends JFrame {
-
+    //acts as an entrance to the program that is opened when the main method inside Pokedex.java is triggered
     public MainMenuFrame() {
         setTitle("Pokédex Launcher");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,14 +55,14 @@ public class MainMenuFrame extends JFrame {
         dexPanel.setBackground(Color.WHITE);
         dexPanel.setBorder(BorderFactory.createLineBorder(new Color(210, 210, 210), 1));
 
-        // Icon
+        //Icon for each dex
         ImageIcon icon = loadScaledIcon(iconPath, 110, 110);
         JLabel iconLabel = new JLabel(icon);
         iconLabel.setHorizontalAlignment(SwingConstants.CENTER);
         iconLabel.setBorder(BorderFactory.createEmptyBorder(10, 0, 0, 0));
         dexPanel.add(iconLabel, BorderLayout.CENTER);
 
-        // Button
+        //Button that will be attachec to event listeners
         JButton button = new JButton(name);
         button.setFont(new Font("Segoe UI", Font.PLAIN, 12));
         button.setFocusPainted(false);
@@ -74,7 +74,6 @@ public class MainMenuFrame extends JFrame {
         dexPanel.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-
                 //Kalos has 3 mini dex comprising its regional dex so we need to give an option
                 //which to pass to Regional dex frame
                 if (name.equals("Kalos")) {
@@ -101,7 +100,8 @@ public class MainMenuFrame extends JFrame {
                             new RegionalDexFrame(selected, selectedDex).setVisible(true);
                         }
                     }
-                } else if (isNational) {
+                } else if (isNational) {//we open a seperate JFrame for our national dex so we have to check
+                    //all of this is because I set up a way to toggle the specific pokemon introduced by generation rather than region
                     new NationalDexFrame("National Dex",
                             Pokedex.nationalDex.toArray(new Pokemon[0]),
                             Pokedex.genOne,
@@ -115,12 +115,12 @@ public class MainMenuFrame extends JFrame {
                             Pokedex.genNine
                     ).setVisible(true);
 
-                } else {
+                } else { //lastly, if it is not National or a Kalos dex then we can just target it normall and apply its name
                     new RegionalDexFrame(name + " Pokédex", pokedex).setVisible(true);
                 }
 
             }
-
+            //makes screen clickable for UX
             @Override
             public void mouseEntered(MouseEvent e) {
                 dexPanel.setCursor(new Cursor(Cursor.HAND_CURSOR));
